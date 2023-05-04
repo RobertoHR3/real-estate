@@ -317,11 +317,13 @@ html {
 }
 
 body {
+  font-family: "Lato", sans-serif;
   font-size: 1.6rem;
   line-height: 1.8;
 }
 
 p {
+  color: #212121;
   font-size: 2rem;
 }
 
@@ -341,6 +343,8 @@ img, picture {
 }
 
 h1, h2, h3 {
+  font-family: "Lato", sans-serif;
+  margin: 2.5rem 0;
   font-weight: 300;
   text-align: center;
 }

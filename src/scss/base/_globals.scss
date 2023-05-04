@@ -1,3 +1,5 @@
+@use 'variables' as v;
+
 html {
     font-size: calc(62.5% * 0.75);
     box-sizing: border-box;
@@ -7,11 +9,13 @@ html {
 }
 
 body {
+    font-family: v.$main_font;
     font-size: 1.6rem;
     line-height: 1.8;
 }
 
 p {
+    color: v.$black;
     font-size: 2rem;
 }
 
@@ -31,6 +35,8 @@ img, picture {
 }
 
 h1, h2, h3 {
+    font-family: v.$main_font;
+    margin: 2.5rem 0;
     font-weight: 300;
     text-align: center;
 }
