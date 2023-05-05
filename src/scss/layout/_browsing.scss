@@ -1,0 +1,37 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.barra {
+    display: flex;
+    flex-direction: column;
+    padding-top: 3rem;
+    @include m.mediaQuery(v.$tablet) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    img {
+        width: 75%;
+        margin: 0 auto;
+    }
+
+}
+
+.browsing a {
+    display: block;
+    text-align: center;
+    color: v.$white;
+    font-size: 2rem;
+    
+    @include m.mediaQuery(v.$tablet) {
+        display: inline;
+        margin-right: 2rem;
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+    &:hover {
+        color: v.$green;
+    }
+}
