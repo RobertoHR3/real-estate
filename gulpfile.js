@@ -26,7 +26,7 @@ const css = done => {
 
 const dev = done => {
     watch( paths.scss, css)
-    done;
+    done();
 }
 
 const versionWebp = done => {
