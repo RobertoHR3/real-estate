@@ -1,16 +1,27 @@
 @use 'base/variables' as v;
 @use 'base/mixins' as m;
 
-.footer {
-    background-color: v.$dark_gray;
-    padding: 2.5rem 0;
-    .container-footer {
-        padding: 2.5rem;
+footer {
+    background-color: v.$second_black;
+    height: auto;
+    font-family: "Open Sans";
+    padding-top: 4rem;
+    color: v.$white;
+    
+    h3 {
+        font-size: 3.6rem;
+        font-weight: 400;
     }
 
-    .copyright {
+    p {
         color: v.$white;
+    }
+
+    .footer-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
         text-align: center;
-        font-size: 2.4rem;
     }
 }

@@ -424,17 +424,26 @@ h4 {
   display: block;
 }
 
-.footer {
-  background-color: #333333;
-  padding: 2.5rem 0;
-}
-.footer .container-footer {
-  padding: 2.5rem;
-}
-.footer .copyright {
+footer {
+  background-color: #111111;
+  height: auto;
+  font-family: "Open Sans";
+  padding-top: 4rem;
   color: #FFFFFF;
+}
+footer h3 {
+  font-size: 3.6rem;
+  font-weight: 400;
+}
+footer p {
+  color: #FFFFFF;
+}
+footer .footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   text-align: center;
-  font-size: 2.4rem;
 }
 
 .barra {
