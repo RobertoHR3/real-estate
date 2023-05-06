@@ -373,9 +373,55 @@ h4 {
   max-width: 80rem;
 }
 
+.no-webp .first {
+  background-image: url(../img/header.jpg);
+}
+
+.webp .first {
+  background-image: url(../img/header.webp);
+}
+
 .header {
   background-color: #333333;
   padding: 1rem 0 3rem 0;
+}
+.header.first {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+@media (min-width: 768px) {
+  .header.first {
+    min-height: 60rem;
+  }
+}
+@media (min-width: 768px) {
+  .header.first .header-content {
+    min-height: 60rem;
+  }
+}
+.header .header-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.header .header-content h1 {
+  color: #FFFFFF;
+  text-align: center;
+  letter-spacing: 4px;
+  line-height: 1.2;
+  padding: 4rem 0;
+}
+@media (min-width: 768px) {
+  .header .header-content h1 {
+    font-weight: 700;
+    text-align: left;
+    padding: 0;
+    letter-spacing: 2px;
+  }
+}
+.header .header-content h1 span {
+  display: block;
 }
 
 .footer {

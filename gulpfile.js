@@ -12,7 +12,8 @@ const imagemin = require('gulp-imagemin');
 //paths
 const paths = {
     scss: 'src/scss/**/*.scss',
-    images: 'src/img/**/*.{jpg,png}'
+    images: 'src/img/**/*.{jpg,png}',
+    js: 'src/js/**/*.js'
 }
 //Functions for work with the dependencies
 
@@ -59,9 +60,16 @@ const versionJpp = done => {
     done()
 }
 
+const javascript = done => {
+    src(paths.js)
+    .pipe( dest('build/js') )
+    done();
+}
+
 
 exports.css = css;
 exports.dev = dev;
 exports.webp = versionWebp;
 exports.avif = versionAvif;
 exports.jpg = versionJpp;
+exports.js = javascript;

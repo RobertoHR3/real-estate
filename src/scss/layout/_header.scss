@@ -1,7 +1,55 @@
 @use 'base/variables' as v;
 @use 'base/mixins' as m;
 
+.no-webp .first {
+    background-image: url(../img/header.jpg);
+}
+
+.webp .first {
+    background-image: url(../img/header.webp);
+}
+
 .header {
     background-color: v.$dark_gray;
     padding: 1rem 0 3rem 0;
+
+    &.first {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        @include m.mediaQuery(v.$tablet) {
+            min-height: 60rem;
+        }
+
+        .header-content {
+            @include m.mediaQuery(v.$tablet) {
+                min-height: 60rem;
+            }
+        }
+    }
+
+    .header-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    
+    .header-content h1{
+        color: v.$white;
+        text-align: center;
+        letter-spacing: 4px;
+        line-height: 1.2;
+        padding: 4rem 0;
+        @include m.mediaQuery(v.$tablet) {
+            font-weight: 700;
+            text-align: left;
+            padding: 0;
+            letter-spacing: 2px;
+        }
+        
+
+        span {
+            display: block;
+        }
+    }
 }
