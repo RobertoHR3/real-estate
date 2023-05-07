@@ -423,7 +423,7 @@ h4 {
 footer {
   background-color: #111111;
   height: auto;
-  font-family: "Open Sans";
+  font-family: "Fira Sans", sans-serif;
   padding-top: 4rem;
   color: #FFFFFF;
 }
@@ -503,6 +503,18 @@ footer .socials a:hover i {
 .barra img {
   width: 75%;
   margin: 0 auto;
+}
+.barra h2 {
+  letter-spacing: 6px;
+  font-family: "Fira Sans", sans-serif;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  font-size: 4.2rem;
+  font-weight: 300;
+  margin: 0;
+}
+.barra h2 span {
+  font-weight: 600;
 }
 
 .browsing a {
