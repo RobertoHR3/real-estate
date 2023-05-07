@@ -551,3 +551,44 @@ footer .socials a:hover i {
 .we-icons .icon h3 {
   text-transform: uppercase;
 }
+
+@media (min-width: 768px) {
+  .ads-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2rem;
+  }
+}
+.ads-container .ads {
+  background-color: #E1E1E1;
+  border: 1px solid #c8c8c8;
+}
+.ads-container .ads .a-content {
+  padding: 2rem;
+}
+.ads-container .ads .a-content h3, .ads-container .ads .a-content p {
+  margin: 0;
+}
+.ads-container .ads .a-content .price {
+  color: #71B100;
+  font-size: 3rem;
+  font-weight: 700;
+}
+.ads-container .ads .features-icons {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  justify-content: space-between;
+}
+.ads-container .ads .features-icons li {
+  display: flex;
+  align-items: center;
+}
+.ads-container .ads .features-icons li p {
+  font-weight: 900;
+  font-size: 2rem;
+}
+.ads-container .ads .features-icons li img {
+  flex: 0 0 3rem;
+  margin-right: 1rem;
+}

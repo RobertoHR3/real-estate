@@ -1,0 +1,49 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.ads-container {
+    @include m.mediaQuery(v.$tablet) {
+        @include m.grid_column(3, 1fr) {
+            column-gap: 2rem;
+        }
+    }
+
+    .ads {
+        background-color: v.$gray;
+        border: 1px solid darken(v.$gray, 10);
+
+        .a-content {
+            padding: 2rem;
+
+            h3, p {
+                margin: 0;
+            }
+
+            .price {
+                color: v.$green;
+                font-size: 3rem;
+                font-weight: 700;
+            }
+        }
+
+        .features-icons {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            justify-content: space-between;
+
+            li {
+                display: flex;
+                align-items: center;
+                p {
+                    font-weight: 900;
+                    font-size: 2rem;
+                }
+                img {
+                    flex: 0 0 3rem;
+                    margin-right: 1rem;
+                }
+            }
+        }
+    }
+}
