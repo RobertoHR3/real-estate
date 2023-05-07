@@ -1,0 +1,21 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+
+.we-icons {
+    @include m.mediaQuery(v.$tablet) {
+        display: flex;
+        column-gap: 2rem;
+    }
+    
+    .icon {
+        text-align: center;
+        img {
+            height: 10rem;
+        }
+
+        h3 {
+            text-transform: uppercase;
+        }
+    }
+}

@@ -365,10 +365,6 @@ h4 {
   font-size: 2.6rem;
 }
 
-.section {
-  margin: 2.5rem 0;
-}
-
 .content-centered {
   max-width: 80rem;
 }
@@ -526,4 +522,20 @@ footer .socials a:hover i {
 }
 .browsing a:hover {
   color: #71B100;
+}
+
+@media (min-width: 768px) {
+  .we-icons {
+    display: flex;
+    column-gap: 2rem;
+  }
+}
+.we-icons .icon {
+  text-align: center;
+}
+.we-icons .icon img {
+  height: 10rem;
+}
+.we-icons .icon h3 {
+  text-transform: uppercase;
 }
