@@ -434,9 +434,9 @@ footer {
 footer h3 {
   font-size: 3.6rem;
   font-weight: 400;
-}
-footer p {
-  color: #FFFFFF;
+  text-transform: capitalize;
+  line-height: 3rem;
+  margin: 0;
 }
 footer .footer-content {
   display: flex;
@@ -444,6 +444,52 @@ footer .footer-content {
   justify-content: center;
   flex-direction: column;
   text-align: center;
+}
+footer .footer-content p {
+  color: #FFFFFF;
+  max-width: 50rem;
+  margin: 1rem 0;
+  line-height: 2.8rem;
+  font-size: 2rem;
+}
+footer .socials {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0 3rem 0;
+}
+footer .socials li {
+  margin: 0 1rem;
+}
+footer .socials a {
+  text-decoration: none;
+  color: #FFFFFF;
+}
+footer .socials a i {
+  font-size: 2.8rem;
+  transition: color 0.4s ease;
+}
+footer .socials a:hover i {
+  color: rgba(0, 140, 255, 0.678);
+}
+
+.footer-bottom {
+  background-color: #000000;
+  padding: 1rem 0;
+  text-align: center;
+}
+.footer-bottom p {
+  color: #FFFFFF;
+  font-size: 2.2rem;
+  word-spacing: 3px;
+  text-transform: capitalize;
+}
+.footer-bottom span {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.4;
+  font-weight: 200;
 }
 
 .barra {
