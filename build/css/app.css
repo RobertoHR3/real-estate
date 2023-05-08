@@ -369,6 +369,26 @@ h4 {
   max-width: 80rem;
 }
 
+.button {
+  background-color: transparent;
+  color: #FA725A;
+  font-weight: bolder;
+  text-decoration: none;
+  padding: 1rem 3rem;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 2.5rem 1.5rem;
+  letter-spacing: 3px;
+  display: block;
+  border: 4px solid #FA725A;
+  font-size: 1.8rem;
+  transition: ease-in-out 0.3s;
+}
+.button:hover {
+  background-color: #FA725A;
+  color: #FFFFFF;
+}
+
 .no-webp .first {
   background-image: url(../img/header.jpg);
 }
@@ -533,7 +553,7 @@ footer .socials a:hover i {
   }
 }
 .browsing a:hover {
-  color: #71B100;
+  color: #6BAEA9;
 }
 
 @media (min-width: 768px) {
@@ -552,6 +572,9 @@ footer .socials a:hover i {
   text-transform: uppercase;
 }
 
+.ads-container {
+  margin-bottom: 3rem;
+}
 @media (min-width: 768px) {
   .ads-container {
     display: grid;
@@ -560,8 +583,14 @@ footer .socials a:hover i {
   }
 }
 .ads-container .ads {
-  background-color: #E1E1E1;
-  border: 1px solid #c8c8c8;
+  background-color: #E8E8E8;
+  border: 1px solid #cfcfcf;
+  margin-bottom: 2rem;
+}
+@media (min-width: 768px) {
+  .ads-container .ads {
+    margin-bottom: 0;
+  }
 }
 .ads-container .ads .a-content {
   padding: 2rem;
@@ -570,7 +599,7 @@ footer .socials a:hover i {
   margin: 0;
 }
 .ads-container .ads .a-content .price {
-  color: #71B100;
+  color: #6BAEA9;
   font-size: 3rem;
   font-weight: 700;
 }

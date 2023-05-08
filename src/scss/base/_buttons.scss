@@ -1,0 +1,17 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.button {
+    @include m.button(transparent, v.$orange) {
+        display: block;
+        border: 4px solid v.$orange;
+        font-size: 1.8rem;
+        transition: ease-in-out 0.3s;
+
+        &:hover {
+            background-color: v.$orange;
+            color: v.$white;
+        }
+    };
+    
+}

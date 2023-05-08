@@ -23,3 +23,16 @@
     padding: 0;
     list-style: none;
 }
+
+@mixin button($color, $color_text) {
+    background-color: $color;
+    color: $color_text;
+    font-weight: bolder;
+    text-decoration: none;
+    padding: 1rem 3rem;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 2.5rem 1.5rem;
+    letter-spacing: 3px;
+    @content;
+}

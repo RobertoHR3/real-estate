@@ -2,6 +2,7 @@
 @use 'base/mixins' as m;
 
 .ads-container {
+    margin-bottom: 3rem;
     @include m.mediaQuery(v.$tablet) {
         @include m.grid_column(3, 1fr) {
             column-gap: 2rem;
@@ -11,7 +12,10 @@
     .ads {
         background-color: v.$gray;
         border: 1px solid darken(v.$gray, 10);
-
+        margin-bottom: 2rem;
+        @include m.mediaQuery(v.$tablet) {
+            margin-bottom: 0;
+        }
         .a-content {
             padding: 2rem;
 
