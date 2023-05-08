@@ -377,15 +377,46 @@ h4 {
   padding: 1rem 3rem;
   text-align: center;
   text-transform: uppercase;
-  margin: 2.5rem 1.5rem;
   letter-spacing: 3px;
   display: block;
   border: 4px solid #FA725A;
   font-size: 1.8rem;
   transition: ease-in-out 0.3s;
+  margin: 2.5rem 1.5rem;
 }
 .button:hover {
   background-color: #FA725A;
+  color: #FFFFFF;
+}
+
+@media (min-width: 480px) {
+  .view-all {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+.view-all .button_all {
+  background-color: transparent;
+  color: #6BAEA9;
+  font-weight: bolder;
+  text-decoration: none;
+  padding: 1rem 3rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  border: 4px solid #6BAEA9;
+  font-size: 1.8rem;
+  transition: ease-in-out 0.3s;
+  margin: 2rem 0;
+  display: block;
+}
+@media (min-width: 480px) {
+  .view-all .button_all {
+    display: inline;
+  }
+}
+.view-all .button_all:hover {
+  background-color: #6BAEA9;
   color: #FFFFFF;
 }
 
