@@ -1,0 +1,42 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.no-web .image-contact {
+    background-image: url(../img/encuentra.jpg);
+}
+
+.webp .image-contact {
+    background-image: url(../img/encuentra.webp);
+}
+
+.image-contact {
+    margin-bottom: 2rem;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 10rem 0;
+    text-align: center;
+    color: v.$white;
+
+    h2 {
+        font-weight: 700;
+        font-size: 4rem;
+    }
+
+    p {
+        color: v.$white;
+        font-size: 2rem;
+        padding: 0 1rem;
+    }
+
+    .button-display {
+        @include m.button(transparent, v.$orange) {
+            border: 4px solid v.$orange;
+            transition: ease-in-out 0.3s;
+            &:hover {
+                background-color: v.$orange;
+                color: v.$white;
+            }
+        };
+    }
+}
