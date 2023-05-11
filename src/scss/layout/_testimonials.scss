@@ -1,0 +1,47 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.blog_grid{
+    @include m.mediaQuery(v.$tablet) {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+    }
+    .testimonials h3{
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 3.5rem;
+    }
+
+    .testimonial {
+        background-color: v.$green;
+        padding: 2rem;
+        font-size: 2.4rem;
+        color: v.$white;
+        border-radius: 1.5rem;
+        margin-bottom: 2rem;
+        @include m.mediaQuery(v.$tablet) {
+            margin-bottom: 0;
+        }
+        
+        blockquote {
+            padding-left: 5rem;
+            position: relative;
+            &::before {
+                content: '';
+                background-image: url(../img/comilla.svg);
+                background-repeat: no-repeat;
+                width: 6rem;
+                height: 8rem;
+                display: block;
+                position: absolute;
+                left: -2rem;
+                top: -1rem;
+            }
+        }
+
+        p {
+            color: v.$white;
+            text-align: right;
+        }
+    }
+}

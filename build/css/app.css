@@ -848,3 +848,47 @@ footer .socials a:hover i {
 .blog-post_cta:hover {
   background: linear-gradient(135deg, #ea5455 0%, #feb692 100%);
 }
+
+@media (min-width: 768px) {
+  .blog_grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+}
+.blog_grid .testimonials h3 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 3.5rem;
+}
+.blog_grid .testimonial {
+  background-color: #6BAEA9;
+  padding: 2rem;
+  font-size: 2.4rem;
+  color: #FFFFFF;
+  border-radius: 1.5rem;
+  margin-bottom: 2rem;
+}
+@media (min-width: 768px) {
+  .blog_grid .testimonial {
+    margin-bottom: 0;
+  }
+}
+.blog_grid .testimonial blockquote {
+  padding-left: 5rem;
+  position: relative;
+}
+.blog_grid .testimonial blockquote::before {
+  content: "";
+  background-image: url(../img/comilla.svg);
+  background-repeat: no-repeat;
+  width: 6rem;
+  height: 8rem;
+  display: block;
+  position: absolute;
+  left: -2rem;
+  top: -1rem;
+}
+.blog_grid .testimonial p {
+  color: #FFFFFF;
+  text-align: right;
+}
