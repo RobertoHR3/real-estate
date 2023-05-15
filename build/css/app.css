@@ -932,3 +932,20 @@ footer .socials a:hover i {
   border-radius: 50%;
   margin: 0 auto;
 }
+
+@media (min-width: 768px) {
+  .about {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 4rem;
+  }
+}
+.about .about-info h3 {
+  text-align: left;
+  font-size: 2.6rem;
+  font-weight: 700;
+}
+
+.we_icons-head h2 {
+  font-size: 4.4rem;
+}
