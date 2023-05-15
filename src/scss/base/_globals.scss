@@ -25,11 +25,17 @@ p {
     margin: 0 auto;
 }
 
+.image_container {
+    width: 95%;
+    max-width: 160rem;
+    margin: 0 auto;
+}
+
 a {
     text-decoration: none;
 }
 
-img, picture {
+img {
     width: 100%;
     display: block;
 }
