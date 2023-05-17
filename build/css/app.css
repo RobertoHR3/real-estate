@@ -395,6 +395,9 @@ h4 {
   color: #FFFFFF;
 }
 
+.view-all {
+  padding: 2rem 0;
+}
 @media (min-width: 480px) {
   .view-all {
     display: flex;
@@ -413,7 +416,6 @@ h4 {
   border: 4px solid #6BAEA9;
   font-size: 1.8rem;
   transition: ease-in-out 0.3s;
-  margin: 2rem 0;
   display: block;
 }
 @media (min-width: 480px) {
@@ -623,11 +625,6 @@ footer .socials a:hover i {
   background-color: #E8E8E8;
   border: 1px solid #cfcfcf;
   margin-bottom: 2rem;
-}
-@media (min-width: 768px) {
-  .ads-container .ads {
-    margin-bottom: 0;
-  }
 }
 .ads-container .ads .a-content {
   padding: 2rem;
@@ -1018,4 +1015,29 @@ footer .socials a:hover i {
     grid-column: 2/3;
     grid-row: 2/3;
   }
+}
+
+.property_summary .features-icons {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  justify-content: space-between;
+  width: 40rem;
+}
+.property_summary .features-icons li {
+  display: flex;
+  align-items: center;
+}
+.property_summary .features-icons li p {
+  font-weight: 900;
+  font-size: 2rem;
+}
+.property_summary .features-icons li img {
+  flex: 0 0 3rem;
+  margin-right: 1rem;
+}
+.property_summary .price {
+  color: #6BAEA9;
+  font-size: 3rem;
+  font-weight: 700;
 }

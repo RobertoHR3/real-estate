@@ -1,0 +1,30 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.property_summary {
+    .features-icons {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        justify-content: space-between;
+        width: 40rem;
+        li {
+            display: flex;
+            align-items: center;
+            p {
+                font-weight: 900;
+                font-size: 2rem;
+            }
+            img {
+                flex: 0 0 3rem;
+                margin-right: 1rem;
+            }
+        }
+    }
+
+    .price {
+        color: v.$green;
+        font-size: 3rem;
+        font-weight: 700;
+    }
+}
