@@ -1041,3 +1041,71 @@ footer .socials a:hover i {
   font-size: 3rem;
   font-weight: 700;
 }
+
+.form p {
+  font-size: 1.4rem;
+  color: #333333;
+  margin: 2rem 0;
+}
+.form legend {
+  font-size: 2rem;
+  color: #333333;
+}
+.form label {
+  font-weight: 700;
+  text-transform: uppercase;
+  display: block;
+}
+.form fieldset {
+  border: 1px solid #E8E8E8;
+}
+.form input:not([type=submit]),
+.form textarea,
+.form select {
+  padding: 1rem;
+  display: block;
+  width: 100%;
+  background-color: #FFFFFF;
+  border: 1px solid #E8E8E8;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+}
+.form input:not([type=submit]):focus,
+.form textarea:focus,
+.form select:focus {
+  outline: none;
+  border: 2px solid #6BAEA9;
+}
+.form textarea {
+  height: 15rem;
+}
+.form .contact-form {
+  max-width: 30rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.form input[type=radio] {
+  margin: 0;
+  width: auto;
+}
+.form input[type=submit] {
+  background-color: transparent;
+  color: #6BAEA9;
+  font-weight: bolder;
+  text-decoration: none;
+  padding: 1rem 3rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  display: block;
+  border: 4px solid #6BAEA9;
+  font-size: 1.8rem;
+  transition: ease-in-out 0.3s;
+  margin: 2.5rem 0;
+}
+.form input[type=submit]:hover {
+  background-color: #6BAEA9;
+  color: #FFFFFF;
+  cursor: pointer;
+}

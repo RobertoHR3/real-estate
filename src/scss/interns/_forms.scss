@@ -1,0 +1,75 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.form {
+    p {
+        font-size: 1.4rem;
+        color: v.$dark_gray;
+        margin: 2rem 0;
+    }
+
+    legend {
+        font-size: 2rem;
+        color: v.$dark_gray;
+    }
+
+    label {
+        font-weight: 700;
+        text-transform: uppercase;
+        display: block;
+    }
+
+    fieldset {
+        border: 1px solid v.$gray;
+    }
+
+    input:not([type="submit"]),
+    textarea,
+    select {
+        padding: 1rem;
+        display: block;
+        width: 100%;
+        background-color: v.$white;
+        border: 1px solid v.$gray;
+        border-radius: 1rem;
+        margin-bottom: 2rem;
+
+        &:focus {
+            outline: none;
+            border: 2px solid v.$green;
+        }
+    }
+
+    textarea {
+        height: 15rem;
+    }
+
+    .contact-form {
+        max-width: 30rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    input[type="radio"] {
+        margin: 0;
+        width: auto;
+    }
+
+    input[type="submit"] {
+        @include m.button(transparent, v.$green) {
+            display: block;
+            border: 4px solid v.$green;
+            font-size: 1.8rem;
+            transition: ease-in-out 0.3s;
+            margin: 2.5rem 0;
+    
+            &:hover {
+                background-color: v.$green;
+                color: v.$white;
+                cursor: pointer;
+            }
+        };
+    }
+
+}
