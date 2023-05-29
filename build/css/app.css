@@ -576,20 +576,6 @@ footer .socials a:hover i {
   font-weight: 600;
 }
 
-.browsing {
-  display: none;
-}
-@media (min-width: 768px) {
-  .browsing {
-    display: flex;
-    align-items: center;
-  }
-}
-
-.show {
-  display: block;
-}
-
 .browsing a {
   display: block;
   text-align: center;
@@ -617,6 +603,23 @@ footer .socials a:hover i {
 }
 .mobile-menu img {
   width: 5rem;
+}
+
+.browsing {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s ease-in-out, opacity 0.5s linear;
+}
+@media (min-width: 768px) {
+  .browsing {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.show {
+  visibility: visible;
+  opacity: 1;
 }
 
 @media (min-width: 768px) {
