@@ -576,6 +576,20 @@ footer .socials a:hover i {
   font-weight: 600;
 }
 
+.browsing {
+  display: none;
+}
+@media (min-width: 768px) {
+  .browsing {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.show {
+  display: block;
+}
+
 .browsing a {
   display: block;
   text-align: center;
@@ -593,6 +607,16 @@ footer .socials a:hover i {
 }
 .browsing a:hover {
   color: #6BAEA9;
+}
+
+/*Hamburguer Menu*/
+@media (min-width: 768px) {
+  .mobile-menu {
+    display: none;
+  }
+}
+.mobile-menu img {
+  width: 5rem;
 }
 
 @media (min-width: 768px) {

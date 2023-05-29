@@ -25,10 +25,6 @@ const css = done => {
     done()
 }
 
-const dev = done => {
-    watch( paths.scss, css)
-    done();
-}
 
 const versionWebp = done => {
     const options = {
@@ -66,6 +62,11 @@ const javascript = done => {
     done();
 }
 
+const dev = done => {
+    watch( paths.scss, css)
+    watch( paths.js, javascript)
+    done();
+}
 
 exports.css = css;
 exports.dev = dev;
