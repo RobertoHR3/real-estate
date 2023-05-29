@@ -9,6 +9,9 @@ const eventListeners = () => {
 
 const browsingResponsive = () => {
     const browsing = document.querySelector('.browsing')
-
-    browsing.classList.toggle('show')
+    if (browsing.classList.contains('show')) {
+        browsing.classList.remove('show')
+    } else {
+        browsing.classList.add('show')
+    }
 }

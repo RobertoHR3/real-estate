@@ -550,6 +550,7 @@ footer .socials a:hover i {
 .barra {
   display: flex;
   flex-direction: column;
+  align-items: center;
   padding-top: 3rem;
 }
 @media (min-width: 768px) {
@@ -612,6 +613,8 @@ footer .socials a:hover i {
 }
 @media (min-width: 768px) {
   .browsing {
+    visibility: visible;
+    opacity: 1;
     display: flex;
     align-items: center;
   }
