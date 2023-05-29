@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     eventListeners()
+    darkMode()
 })
 
 const eventListeners = () => {
@@ -14,4 +15,13 @@ const browsingResponsive = () => {
     } else {
         browsing.classList.add('show')
     }
+}
+
+const darkMode = () => {
+    const buttonDarkMode = document.querySelector('.dark-mode-button')
+    buttonDarkMode.addEventListener('click', changeColor)
+}
+
+const changeColor = () => {
+    document.body.classList.toggle('dark-mode')
 }

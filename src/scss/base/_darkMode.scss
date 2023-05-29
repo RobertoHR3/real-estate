@@ -1,0 +1,36 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.dark-mode {
+    background-color: v.$black;
+
+    p {
+        color: v.$white;
+    }
+
+    h1, h2, h3, h4, blockquote {
+        color: v.$gray;
+    }
+
+    .ads-container {
+        .ads{
+            background-color: v.$black;
+            border: 1px solid v.$dark_gray;
+            .features-icons img {
+                filter: invert(100%);
+            }
+        }
+    }
+    
+    .blog-post_date {
+        span {
+            color: v.$gray;
+        }
+    }
+
+    .testimonial_grid {
+        .testimonial_content {
+            background-color: #393D3E;
+        }
+    }
+}

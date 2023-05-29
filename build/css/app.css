@@ -428,6 +428,29 @@ h4 {
   color: #FFFFFF;
 }
 
+.dark-mode {
+  background-color: #212121;
+}
+.dark-mode p {
+  color: #FFFFFF;
+}
+.dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4, .dark-mode blockquote {
+  color: #E8E8E8;
+}
+.dark-mode .ads-container .ads {
+  background-color: #212121;
+  border: 1px solid #333333;
+}
+.dark-mode .ads-container .ads .features-icons img {
+  filter: invert(100%);
+}
+.dark-mode .blog-post_date span {
+  color: #E8E8E8;
+}
+.dark-mode .testimonial_grid .testimonial_content {
+  background-color: #393D3E;
+}
+
 .no-webp .first {
   background-image: url(../img/header.jpg);
 }
