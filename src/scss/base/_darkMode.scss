@@ -33,4 +33,28 @@
             background-color: #393D3E;
         }
     }
+
+    .about_head h1 {
+        color: v.$gray;
+    }
+
+    .property_summary {
+        .features-icons img {
+            filter: invert(100%);
+        }
+    }
+
+    .form {
+        label, legend, p {
+            color: v.$gray;
+        }
+
+        input:not([type="submit"]),
+        textarea,
+        select {
+            background-color: v.$dark_gray;
+            border: 1px solid v.$dark_gray;
+            color: v.$white;
+        }
+    }
 }

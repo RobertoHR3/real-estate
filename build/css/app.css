@@ -450,6 +450,22 @@ h4 {
 .dark-mode .testimonial_grid .testimonial_content {
   background-color: #393D3E;
 }
+.dark-mode .about_head h1 {
+  color: #E8E8E8;
+}
+.dark-mode .property_summary .features-icons img {
+  filter: invert(100%);
+}
+.dark-mode .form label, .dark-mode .form legend, .dark-mode .form p {
+  color: #E8E8E8;
+}
+.dark-mode .form input:not([type=submit]),
+.dark-mode .form textarea,
+.dark-mode .form select {
+  background-color: #333333;
+  border: 1px solid #333333;
+  color: #FFFFFF;
+}
 
 .no-webp .first {
   background-image: url(../img/header.jpg);
@@ -653,7 +669,8 @@ footer .socials a:hover i {
 .browsing {
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0.3s ease-in-out, opacity 0.5s linear;
+  height: 0;
+  transition: visibility 0.3s ease-in-out, opacity 0.3s linear, height 0.5s linear;
 }
 @media (min-width: 768px) {
   .browsing {
@@ -667,6 +684,7 @@ footer .socials a:hover i {
 .show {
   visibility: visible;
   opacity: 1;
+  height: auto;
 }
 
 @media (min-width: 768px) {
