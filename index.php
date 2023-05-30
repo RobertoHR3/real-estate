@@ -1,44 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Real Estate</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700;900&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="build/css/app.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<body>
-    <header class="header first">
-        <div class="container header-content">
-            <div class="barra">
-                <a href="/">
-                    <h2>Real<span>Estate</span></h2>
-                </a>
-
-                <div class="mobile-menu">
-                    <img src="build/img/barras.svg" alt="icon-barra">
-                </div>
-                
-                <div class="right">
-                    <img class="dark-mode-button" src="build/img/dark-mode.svg" alt="image-button">
-                    <nav class="browsing">
-                        <a href="about.html">About</a>
-                        <a href="ads.html">Ads</a>
-                        <a href="blog.html">Blog</a>
-                        <a href="contact.html">Contact</a>
-                    </nav>
-                </div>
-                
-            </div>
-
-            <h1>Houses and Apartments for sale <span>Exclusive luxury</span></h1>
-        </div>
-    </header>
-
+<?php
+    $first = true;
+    include './includes/templetes/header.php';
+?>
     <main class="container">
         <h1>About us</h1>
 
@@ -93,7 +56,7 @@
                     </ul>
                 </div>
 
-                <a class="button" href="ad.html">View property</a>
+                <a class="button" href="ad.php">View property</a>
             </div> <!-- ads -->
 
             <div class="ads">
@@ -122,7 +85,7 @@
                     </ul>
                 </div>
 
-                <a class="button" href="ad.html">View property</a>
+                <a class="button" href="ad.php">View property</a>
             </div> <!-- ads -->
 
             <div class="ads">
@@ -151,19 +114,19 @@
                     </ul>
                 </div>
 
-                <a class="button" href="ad.html">View property</a>
+                <a class="button" href="ad.php">View property</a>
             </div> <!-- ads -->
         </div>
 
         <div class="view-all">
-            <a class="button_all" href="ads.html">View All</a>
+            <a class="button_all" href="ads.php">View All</a>
         </div>
     </section>
 
     <section class="image-contact"> 
         <h2>Find your dream house</h2>
         <p>Fill out the contact form and a consultant will contact you as soon as possible.</p>
-        <a class="button-display" href="contact.html">Contact</a>
+        <a class="button-display" href="contact.php">Contact</a>
     </section>
 
     <section class="blog_grid">
@@ -184,7 +147,7 @@
                     </div>
                     <h1 class="blog-post_title">Terrace on the roof of your home</h1>
                     <p class="blog-post_text">Tips for building a rooftop terrace with the best materials and saving money</p>
-                    <a href="blog.html" class="blog-post_cta">Read More</a>
+                    <a href="blog.php" class="blog-post_cta">Read More</a>
                 </div>
             </div>
     
@@ -203,7 +166,7 @@
                     </div>
                     <h1 class="blog-post_title">Home decorating guide</h1>
                     <p class="blog-post_text">Maximize the space in your home with this guide, learn how to combine furniture and colors to give life to your space.</p>
-                    <a href="blog.html" class="blog-post_cta">Read More</a>
+                    <a href="blog.php" class="blog-post_cta">Read More</a>
                 </div>
             </div>
 
