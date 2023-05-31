@@ -15,7 +15,7 @@
             <p>copyright &copy;<?php echo date('Y');?> RealEstate. designed by <span>Roberto</span></p>
         </div>
     </footer>
-    <script src="build/js/modernizr.js"></script>
-    <script src="build/js/app.js"></script>
+    <script src="/Project_RealEstates/build/js/modernizr.js"></script>
+    <script src="/Project_RealEstates/build/js/app.js"></script>
 </body>
 </html>

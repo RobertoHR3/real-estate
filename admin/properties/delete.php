@@ -1,11 +1,11 @@
 <?php
-    require 'includes/functions.php';
+    require '../../includes/functions.php';
     includeTemplate('header');
 
 ?>
 
     <main class="container">
-        <h1>Test</h1>
+        <h1>Delete</h1>
     </main>
 
 <?php

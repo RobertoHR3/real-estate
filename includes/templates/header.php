@@ -20,11 +20,11 @@
                 </a>
 
                 <div class="mobile-menu">
-                    <img src="build/img/barras.svg" alt="icon-barra">
+                    <img src="/Project_RealEstates/build/img/barras.svg" alt="icon-barra">
                 </div>
                 
                 <div class="right">
-                    <img class="dark-mode-button" src="build/img/dark-mode.svg" alt="image-button">
+                    <img class="dark-mode-button" src="/Project_RealEstates/build/img/dark-mode.svg" alt="image-button">
                     <nav class="browsing">
                         <a href="about.php">About</a>
                         <a href="ads.php">Ads</a>
