@@ -1,5 +1,7 @@
 <?php
-    include './includes/templetes/header.php';
+    require 'includes/functions.php';
+    includeTemplate('header');
+
 ?>
 
     <main class="container content-centered">
@@ -33,5 +35,5 @@
     </main>
 
     <?php
-        include './includes/templetes/footer.php';
+        includeTemplate('footer');
     ?>

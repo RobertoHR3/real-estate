@@ -1,5 +1,7 @@
 <?php
-    include './includes/templetes/header.php';
+    require 'includes/functions.php';
+    includeTemplate('header');
+
 ?>
 
     <main class="container">
@@ -183,5 +185,5 @@
     </main>
 
     <?php
-        include './includes/templetes/footer.php';
+        includeTemplate('footer');
     ?>

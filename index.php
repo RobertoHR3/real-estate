@@ -1,6 +1,7 @@
 <?php
-    $first = true;
-    include './includes/templetes/header.php';
+    require 'includes/functions.php';
+    includeTemplate('header', $first = true);
+
 ?>
     <main class="container">
         <h1>About us</h1>
@@ -271,5 +272,5 @@
     </div>
 
 <?php
-    include './includes/templetes/footer.php';
+    includeTemplate('footer');
 ?>
