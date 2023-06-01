@@ -1,4 +1,16 @@
 <?php
+    //Database
+    require '../../includes/config/database.php';
+    $db = dbConnection();
+    //var_dump($db);
+
+    if ($_SERVER["REQUEST_METHOD"] === 'POST') {
+        echo "<pre>";
+        var_dump($_POST);
+        echo "</pre>";
+    }
+    
+
     require '../../includes/functions.php';
     includeTemplate('header');
 
@@ -6,19 +18,17 @@
 
     <main class="container">
         <h1>Create</h1>
-        <div class="view-all-start">
-            <a class="button_all-start" href="/Project_RealEstates/admin/index.php">Back</a>
-        </div>
+        
 
-        <form class="form">
+        <form class="form" method="POST" action="/Project_RealEstates/admin/properties/create.php">
             <fieldset>
                 <legend>General Information</legend>
 
                 <label for="title">Title:</label>
-                <input type="text" id="title" placeholder="Property title">
+                <input type="text" id="title" name="title" placeholder="Property title">
 
                 <label for="price">Price:</label>
-                <input type="number" id="price" placeholder="Property price">
+                <input type="number" id="price" name="price" placeholder="Property price">
 
                 <label for="image">Image:</label>
                 <input type="file" id="image" accept="image/jpeg, image/png">
@@ -50,7 +60,12 @@
                 </select>
             </fieldset>
 
-            <input type="submit" value="Create property">
+            
+
+            <div class="view-all-start">
+                <input type="submit" value="Create property">
+                <a class="button_all-start" href="/Project_RealEstates/admin/index.php">Back</a>
+            </div>
         </form> 
     </main>
 

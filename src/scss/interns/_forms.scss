@@ -57,13 +57,17 @@
     }
 
     input[type="submit"] {
+        width: 100%;
+        @include m.mediaQuery(v.$tablet) {
+            width: auto;
+        }
         @include m.button(transparent, v.$green) {
             display: block;
             border: 4px solid v.$green;
             font-size: 1.8rem;
             transition: ease-in-out 0.3s;
             margin: 2.5rem 0;
-    
+            padding: 1.5rem;
             &:hover {
                 background-color: v.$green;
                 color: v.$white;
