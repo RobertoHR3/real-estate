@@ -17,6 +17,7 @@
     
 }
 
+
 .view-all {
     padding: 2rem 0;
     @include m.mediaQuery(v.$phone) {
@@ -25,6 +26,32 @@
     }
     
     .button_all {
+        @include m.button(transparent, v.$green) {
+            border: 4px solid v.$green;
+            font-size: 1.8rem;
+            transition: ease-in-out 0.3s;
+            display: block;
+            @include m.mediaQuery(v.$phone) {
+                display: inline;
+            }
+
+            &:hover {
+                background-color: v.$green;
+                color: v.$white;
+            }
+        };
+    };
+}
+
+
+.view-all-start {
+    padding: 2rem 0;
+    @include m.mediaQuery(v.$phone) {
+        display: flex;
+        justify-content: flex-start;
+    }
+    
+    .button_all-start {
         @include m.button(transparent, v.$green) {
             border: 4px solid v.$green;
             font-size: 1.8rem;

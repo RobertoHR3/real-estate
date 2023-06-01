@@ -428,6 +428,39 @@ h4 {
   color: #FFFFFF;
 }
 
+.view-all-start {
+  padding: 2rem 0;
+}
+@media (min-width: 480px) {
+  .view-all-start {
+    display: flex;
+    justify-content: flex-start;
+  }
+}
+.view-all-start .button_all-start {
+  background-color: transparent;
+  color: #6BAEA9;
+  font-weight: bolder;
+  text-decoration: none;
+  padding: 1rem 3rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  border: 4px solid #6BAEA9;
+  font-size: 1.8rem;
+  transition: ease-in-out 0.3s;
+  display: block;
+}
+@media (min-width: 480px) {
+  .view-all-start .button_all-start {
+    display: inline;
+  }
+}
+.view-all-start .button_all-start:hover {
+  background-color: #6BAEA9;
+  color: #FFFFFF;
+}
+
 .dark-mode {
   background-color: #212121;
 }

@@ -7,8 +7,8 @@
     <main class="container">
         <h1>Real Estate Manager</h1>
 
-        <div class="view-all">
-            <a class="button_all" href="/Project_RealEstates/admin/properties/create.php">New Property</a>
+        <div class="view-all-start">
+            <a class="button_all-start" href="/Project_RealEstates/admin/properties/create.php">New Property</a>
         </div>
     </main> 
 
