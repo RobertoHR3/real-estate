@@ -2,14 +2,34 @@
     //Database
     require '../../includes/config/database.php';
     $db = dbConnection();
-    //var_dump($db);
-
-    if ($_SERVER["REQUEST_METHOD"] === 'POST') {
+    // var_dump($db);
+    
+    /*if ($_SERVER["REQUEST_METHOD"] === 'POST') {
         echo "<pre>";
         var_dump($_POST);
         echo "</pre>";
-    }
+    }*/
+
+    $title = $_POST["title"];
+    $price = $_POST["price"];
+    $description = $_POST["description"];
+    $rooms = $_POST["rooms"];
+    $wc = $_POST["wc"];
+    $parking = $_POST["parking"];
+    $sellers_id = $_POST["seller"];
     
+    //Insert into database
+    $query = " INSERT INTO properties (title, price, description, rooms, wc, parking, sellers_id) VALUES( '$title', '$price', '$description', '$rooms', '$wc', '$parking', '$sellers_id' ) ";
+
+    // echo $query;
+
+    $result = mysqli_query($db, $query);
+
+    if ($result) {
+        echo "Successful Insert";
+    } else {
+        echo "Failed Insert";
+    }
 
     require '../../includes/functions.php';
     includeTemplate('header');
@@ -34,7 +54,7 @@
                 <input type="file" id="image" accept="image/jpeg, image/png">
 
                 <label for="description">Description</label>
-                <textarea id="description"></textarea>
+                <textarea id="description" name="description"></textarea>
 
             </fieldset>
 
@@ -42,19 +62,19 @@
                 <legend>Property Information</legend>
 
                 <label for="room">Rooms:</label>
-                <input type="number" id="room" placeholder="Ex: 3" min="1" max="9">
+                <input type="number" id="room" name="rooms" placeholder="Ex: 3" min="1" max="9">
 
                 <label for="wc">Bathrooms:</label>
-                <input type="number" id="wc" placeholder="Ex: 3" min="1" max="9">
+                <input type="number" id="wc" name="wc" placeholder="Ex: 3" min="1" max="9">
 
                 <label for="parking">Parking:</label>
-                <input type="number" id="parking" placeholder="Ex: 3" min="1" max="9">
+                <input type="number" id="parking" name="parking" placeholder="Ex: 3" min="1" max="9">
             </fieldset>
 
             <fieldset>
                 <legend>Seller</legend>
 
-                <select>
+                <select name="seller">
                     <option value="1">Roberto</option>
                     <option value="2">Vanessa</option>
                 </select>
