@@ -3,34 +3,75 @@
     require '../../includes/config/database.php';
     $db = dbConnection();
     // var_dump($db);
+
+    //Array to errors
+    $errors = [];
     
-    /*if ($_SERVER["REQUEST_METHOD"] === 'POST') {
-        echo "<pre>";
-        var_dump($_POST);
-        echo "</pre>";
-    }*/
+    //Run after the form is sumbitted
+    if ($_SERVER["REQUEST_METHOD"] === 'POST') {
+        // echo "<pre>";
+        // var_dump($_POST);
+        // echo "</pre>";
 
-    $title = $_POST["title"];
-    $price = $_POST["price"];
-    $description = $_POST["description"];
-    $rooms = $_POST["rooms"];
-    $wc = $_POST["wc"];
-    $parking = $_POST["parking"];
-    $sellers_id = $_POST["seller"];
-    
-    //Insert into database
-    $query = " INSERT INTO properties (title, price, description, rooms, wc, parking, sellers_id) VALUES( '$title', '$price', '$description', '$rooms', '$wc', '$parking', '$sellers_id' ) ";
+        $title = $_POST["title"];
+        $price = (int)$_POST["price"];
+        $description = $_POST["description"];
+        $rooms = (int)$_POST["rooms"];
+        $wc = (int)$_POST["wc"];
+        $parking = (int)$_POST["parking"];
+        $sellers_id = $_POST["seller"];
 
-    // echo $query;
+        if ($title === '') {
+            $errors[] = 'Add a title';
+        }
 
-    $result = mysqli_query($db, $query);
+        if ($price <= 0) {
+            $errors[] = 'Price is obligatory';
+        }
 
-    if ($result) {
-        echo "Successful Insert";
-    } else {
-        echo "Failed Insert";
-    }
+        if (strlen($description)  < 50) {
+            $errors[] = 'Add description with at least 50 characters';
+        }
 
+        if ($rooms <= 0) {
+            $errors[] = 'Add number of rooms';
+        }
+
+        if ($wc <= 0) {
+            $errors[] = 'Add number of wc';
+        }
+
+        if ($parking <= 0) {
+            $errors[] = 'Add number of parking';
+        }
+
+        if ($sellers_id == '') {
+            $errors[] = 'Choose a salesperson';
+        }
+
+        // echo "<pre>";
+        // var_dump($errors);
+        // echo "</pre>";
+        
+        //Check to error array is empty
+
+        //Insert into database
+        
+        if (empty($errors)) {
+            $query = " INSERT INTO properties (title, price, description, rooms, wc, parking, sellers_id ) VALUES ( '$title', '$price', '$description', '$rooms', '$wc', '$parking', '$sellers_id' ) ";
+
+            // echo $query;
+            $result = mysqli_query($db, $query);
+
+            if ($result) {
+                echo "Successful Insert";
+            } else {
+                echo "Failed Insert";
+            }
+        }
+
+        
+    }   
     require '../../includes/functions.php';
     includeTemplate('header');
 
@@ -39,6 +80,11 @@
     <main class="container">
         <h1>Create</h1>
         
+        <?php foreach($errors as $error): ?>
+        <div class="alert error">
+            <?php echo $error; ?>
+        </div>
+        <?php endforeach; ?>
 
         <form class="form" method="POST" action="/Project_RealEstates/admin/properties/create.php">
             <fieldset>
@@ -75,6 +121,7 @@
                 <legend>Seller</legend>
 
                 <select name="seller">
+                    <option value="" selected>--Select--</option>
                     <option value="1">Roberto</option>
                     <option value="2">Vanessa</option>
                 </select>

@@ -1238,3 +1238,15 @@ footer .socials a:hover i {
   color: #FFFFFF;
   cursor: pointer;
 }
+
+.alert {
+  padding: 0.5rem;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 1rem 0;
+}
+.alert.error {
+  background-color: rgb(189, 7, 7);
+  color: #FFFFFF;
+}
