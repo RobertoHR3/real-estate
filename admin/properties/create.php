@@ -7,6 +7,15 @@
     //Array to errors
     $errors = [];
     
+    //Default value in variables
+        $title = '';
+        $price = '';
+        $description = '';
+        $rooms = '';
+        $wc = '';
+        $parking = '';
+        $sellers_id = '';
+
     //Run after the form is sumbitted
     if ($_SERVER["REQUEST_METHOD"] === 'POST') {
         // echo "<pre>";
@@ -91,16 +100,16 @@
                 <legend>General Information</legend>
 
                 <label for="title">Title:</label>
-                <input type="text" id="title" name="title" placeholder="Property title">
+                <input type="text" id="title" name="title" placeholder="Property title" value="<?php echo $title;?>">
 
                 <label for="price">Price:</label>
-                <input type="number" id="price" name="price" placeholder="Property price">
+                <input type="number" id="price" name="price" placeholder="Property price" value="<?php echo $price;?>">
 
                 <label for="image">Image:</label>
                 <input type="file" id="image" accept="image/jpeg, image/png">
 
                 <label for="description">Description</label>
-                <textarea id="description" name="description"></textarea>
+                <textarea id="description" name="description"><?php echo $description;?></textarea>
 
             </fieldset>
 
@@ -108,13 +117,13 @@
                 <legend>Property Information</legend>
 
                 <label for="room">Rooms:</label>
-                <input type="number" id="room" name="rooms" placeholder="Ex: 3" min="1" max="9">
+                <input type="number" id="room" name="rooms" placeholder="Ex: 3" min="1" max="9" value="<?php echo $rooms;?>">
 
                 <label for="wc">Bathrooms:</label>
-                <input type="number" id="wc" name="wc" placeholder="Ex: 3" min="1" max="9">
+                <input type="number" id="wc" name="wc" placeholder="Ex: 3" min="1" max="9" value="<?php echo $wc;?>">
 
                 <label for="parking">Parking:</label>
-                <input type="number" id="parking" name="parking" placeholder="Ex: 3" min="1" max="9">
+                <input type="number" id="parking" name="parking" placeholder="Ex: 3" min="1" max="9" value="<?php echo $parking;?>">
             </fieldset>
 
             <fieldset>
