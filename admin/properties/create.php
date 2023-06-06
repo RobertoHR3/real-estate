@@ -4,6 +4,10 @@
     $db = dbConnection();
     // var_dump($db);
 
+    //Query to obtain vendors
+    $consulta = "SELECT * FROM sellers;";
+    $resultado = mysqli_query($db, $consulta);
+
     //Array to errors
     $errors = [];
     
@@ -131,12 +135,12 @@
 
                 <select name="seller">
                     <option value="" selected>--Select--</option>
-                    <option value="1">Roberto</option>
-                    <option value="2">Vanessa</option>
+                    <?php while ($row = mysqli_fetch_assoc($resultado)) { ?>
+                        <option value="<?php $row['id'];?>"> <?php echo $row[' name'] . " " . $row['lastName']; ?> </option>
+                    <?php }; ?>
+                    
                 </select>
             </fieldset>
-
-            
 
             <div class="view-all-start">
                 <input type="submit" value="Create property">
