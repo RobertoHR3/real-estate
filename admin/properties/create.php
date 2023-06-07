@@ -26,13 +26,23 @@
         // var_dump($_POST);
         // echo "</pre>";
 
-        $title = $_POST["title"];
-        $price = (int)$_POST["price"];
-        $description = $_POST["description"];
-        $rooms = (int)$_POST["rooms"];
-        $wc = (int)$_POST["wc"];
-        $parking = (int)$_POST["parking"];
-        $sellers_id = $_POST["seller"];
+        // $number = '1HOLA';
+        // $number2 = 1;
+
+        // //sanitizar
+        // $resultadoTest = filter_var($number2, FILTER_SANITIZE_NUMBER_INT);
+        // var_dump($resultadoTest);
+
+        // exit;
+
+        //Sanitize data entries
+        $title = mysqli_real_escape_string($db, $_POST["title"]);
+        $price = (int)mysqli_real_escape_string($db, $_POST["price"]);
+        $description = mysqli_real_escape_string($db, $_POST["description"]);
+        $rooms = (int)mysqli_real_escape_string($db, $_POST["rooms"]);
+        $wc = (int)mysqli_real_escape_string($db, $_POST["wc"]);
+        $parking = (int)mysqli_real_escape_string($db, $_POST["parking"]);
+        $sellers_id = mysqli_real_escape_string($db, $_POST["seller"]);
         $startDate = date('Ymd');
 
         if ($title === '') {
@@ -122,13 +132,13 @@
                 <legend>Property Information</legend>
 
                 <label for="room">Rooms:</label>
-                <input type="number" id="room" name="rooms" placeholder="Ex: 3" value="<?php echo $rooms;?>">
+                <input type="number" id="room" name="rooms" placeholder="Ex: 3" min="1" max="9" value="<?php echo $rooms;?>">
 
                 <label for="wc">Bathrooms:</label>
-                <input type="number" id="wc" name="wc" placeholder="Ex: 3" value="<?php echo $wc;?>">
+                <input type="number" id="wc" name="wc" placeholder="Ex: 3" min="1" max="9" value="<?php echo $wc;?>">
 
                 <label for="parking">Parking:</label>
-                <input type="number" id="parking" name="parking" placeholder="Ex: 3" value="<?php echo $parking;?>">
+                <input type="number" id="parking" name="parking" placeholder="Ex: 3" min="1" max="9" value="<?php echo $parking;?>">
             </fieldset>
 
             <fieldset>
