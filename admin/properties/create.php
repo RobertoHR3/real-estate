@@ -33,6 +33,7 @@
         $wc = (int)$_POST["wc"];
         $parking = (int)$_POST["parking"];
         $sellers_id = $_POST["seller"];
+        $startDate = date('Ymd');
 
         if ($title === '') {
             $errors[] = 'Add a title';
@@ -58,7 +59,7 @@
             $errors[] = 'Add number of parking';
         }
 
-        if ($sellers_id == '') {
+        if (!$sellers_id) {
             $errors[] = 'Choose a salesperson';
         }
 
@@ -71,13 +72,13 @@
         //Insert into database
         
         if (empty($errors)) {
-            $query = " INSERT INTO properties (title, price, description, rooms, wc, parking, sellers_id ) VALUES ( '$title', '$price', '$description', '$rooms', '$wc', '$parking', '$sellers_id' ) ";
+            $query = " INSERT INTO properties (title, price, description, rooms, wc, parking, startDate, sellers_id ) VALUES ( '$title', '$price', '$description', '$rooms', '$wc', '$parking', $startDate, '$sellers_id' ) ";
 
             // echo $query;
             $result = mysqli_query($db, $query);
 
             if ($result) {
-                echo "Successful Insert";
+                header('Location: /Project_RealEstates/admin/index.php');
             } else {
                 echo "Failed Insert";
             }
@@ -121,13 +122,13 @@
                 <legend>Property Information</legend>
 
                 <label for="room">Rooms:</label>
-                <input type="number" id="room" name="rooms" placeholder="Ex: 3" min="1" max="9" value="<?php echo $rooms;?>">
+                <input type="number" id="room" name="rooms" placeholder="Ex: 3" value="<?php echo $rooms;?>">
 
                 <label for="wc">Bathrooms:</label>
-                <input type="number" id="wc" name="wc" placeholder="Ex: 3" min="1" max="9" value="<?php echo $wc;?>">
+                <input type="number" id="wc" name="wc" placeholder="Ex: 3" value="<?php echo $wc;?>">
 
                 <label for="parking">Parking:</label>
-                <input type="number" id="parking" name="parking" placeholder="Ex: 3" min="1" max="9" value="<?php echo $parking;?>">
+                <input type="number" id="parking" name="parking" placeholder="Ex: 3" value="<?php echo $parking;?>">
             </fieldset>
 
             <fieldset>
@@ -136,7 +137,7 @@
                 <select name="seller">
                     <option value="" selected>--Select--</option>
                     <?php while ($row = mysqli_fetch_assoc($resultado)) { ?>
-                        <option value="<?php $row['id'];?>"> <?php echo $row[' name'] . " " . $row['lastName']; ?> </option>
+                        <option <?php echo $sellers_id === $row['id'] ? 'selected' : ''; ?> value="<?php echo $row['id']; ?>"> <?php echo $row[' name'] . " " . $row['lastName']; ?> </option>
                     <?php }; ?>
                     
                 </select>
