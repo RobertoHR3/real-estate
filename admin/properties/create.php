@@ -100,6 +100,22 @@
         //Insert into database
         
         if (empty($errors)) {
+            /**Files upload(3)**/
+
+            //Create file
+            $imageFile = '../../images';
+
+            if (!is_dir($imageFile)) {
+                mkdir($imageFile);
+            } 
+
+            //Image upload
+            move_uploaded_file($image['tmp_name'], $imageFile . "/file.jpg");
+
+            exit;
+            
+
+
             $query = " INSERT INTO properties (title, price, description, rooms, wc, parking, startDate, sellers_id ) VALUES ( '$title', '$price', '$description', '$rooms', '$wc', '$parking', $startDate, '$sellers_id' ) ";
 
             // echo $query;
