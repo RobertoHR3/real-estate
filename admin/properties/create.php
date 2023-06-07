@@ -26,6 +26,10 @@
         // var_dump($_POST);
         // echo "</pre>";
 
+        // echo "<pre>";
+        // var_dump($_FILES);
+        // echo "</pre>";
+        // exit;
         // $number = '1HOLA';
         // $number2 = 1;
 
@@ -33,9 +37,9 @@
         // $resultadoTest = filter_var($number2, FILTER_SANITIZE_NUMBER_INT);
         // var_dump($resultadoTest);
 
-        // exit;
+        
 
-        //Sanitize data entries
+        //Sanitize data entries (1)
         $title = mysqli_real_escape_string($db, $_POST["title"]);
         $price = (int)mysqli_real_escape_string($db, $_POST["price"]);
         $description = mysqli_real_escape_string($db, $_POST["description"]);
@@ -44,6 +48,9 @@
         $parking = (int)mysqli_real_escape_string($db, $_POST["parking"]);
         $sellers_id = mysqli_real_escape_string($db, $_POST["seller"]);
         $startDate = date('Ymd');
+
+        //Assign files to a variables
+        $image = $_FILES['image'];
 
         if ($title === '') {
             $errors[] = 'Add a title';
@@ -71,6 +78,17 @@
 
         if (!$sellers_id) {
             $errors[] = 'Choose a salesperson';
+        }
+
+        if (!$image['name']) {
+            $errors[] = 'Image is obligatory';
+        }
+
+        //Validate for size
+        $measure = 1000 * 100; //This will retur kilobytes
+
+        if ($image['size'] > $measure) {
+            $errors[] = 'Image is very too heavy';
         }
 
         // echo "<pre>";
@@ -109,8 +127,8 @@
             <?php echo $error; ?>
         </div>
         <?php endforeach; ?>
-
-        <form class="form" method="POST" action="/Project_RealEstates/admin/properties/create.php">
+        <!-- (2) -->
+        <form class="form" method="POST" action="/Project_RealEstates/admin/properties/create.php" enctype="multipart/form-data">
             <fieldset>
                 <legend>General Information</legend>
 
@@ -121,7 +139,7 @@
                 <input type="number" id="price" name="price" placeholder="Property price" value="<?php echo $price;?>">
 
                 <label for="image">Image:</label>
-                <input type="file" id="image" accept="image/jpeg, image/png">
+                <input type="file" id="image" accept="image/jpeg, image/png" name="image">
 
                 <label for="description">Description</label>
                 <textarea id="description" name="description"><?php echo $description;?></textarea>
