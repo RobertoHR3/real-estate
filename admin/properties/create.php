@@ -47,7 +47,7 @@
         $wc = (int)mysqli_real_escape_string($db, $_POST["wc"]);
         $parking = (int)mysqli_real_escape_string($db, $_POST["parking"]);
         $sellers_id = mysqli_real_escape_string($db, $_POST["seller"]);
-        $startDate = date('Ymd');
+        $startDate = date('Ydm');
 
         //Assign files to a variables
         $image = $_FILES['image'];
@@ -103,20 +103,19 @@
             /**Files upload(3)**/
 
             //Create file
-            $imageFile = '../../images';
+            $imageFile = '../../images/';
 
             if (!is_dir($imageFile)) {
                 mkdir($imageFile);
             } 
 
+            //Generate a unique name for images(4)
+            $imageName = md5( uniqid( rand(), true )) . ".jpg";
+
             //Image upload
-            move_uploaded_file($image['tmp_name'], $imageFile . "/file.jpg");
-
-            exit;
+            move_uploaded_file($image['tmp_name'], $imageFile . $imageName);
             
-
-
-            $query = " INSERT INTO properties (title, price, description, rooms, wc, parking, startDate, sellers_id ) VALUES ( '$title', '$price', '$description', '$rooms', '$wc', '$parking', $startDate, '$sellers_id' ) ";
+            $query = " INSERT INTO properties (title, price, image, description, rooms, wc, parking, startDate, sellers_id ) VALUES ( '$title', '$price', '$imageName', '$description', '$rooms', '$wc', '$parking', $startDate, '$sellers_id' ) ";
 
             // echo $query;
             $result = mysqli_query($db, $query);
