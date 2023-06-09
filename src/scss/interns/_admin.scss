@@ -18,3 +18,32 @@
         color: v.$third_gray;
     }
 }
+
+table.properties {
+    margin-top: 4rem;
+    width: 100%;
+    border-spacing: 0;
+
+    thead {
+        background-color: v.$green;
+
+        th {
+            color: v.$white;
+            padding: 2rem;
+        }
+    }
+
+    .image-table {
+        width: 10rem;
+    }
+
+    tbody {
+        .flex-button {
+            @include m.mediaQuery(v.$tablet) {
+                display: flex;
+                justify-content: center;
+            }
+            
+        }
+    }
+}
