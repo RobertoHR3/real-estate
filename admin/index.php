@@ -1,4 +1,4 @@
-<?php 
+<?php
     //Import conection
     require '../includes/config/database.php';
     $db = dbConnection();
@@ -42,7 +42,7 @@
                         <td>$ <?php echo $row_properties['price']; ?></td>
                         <td class="flex-button">
                             <a href="#" class="button-red">Delete</a>
-                            <a href="#" class="button-yellow">Update</a>
+                            <a href="../admin/properties/update.php?id=<?php echo $row_properties['id']; ?>" class="button-yellow">Update</a>
                         </td>
                     </tr>
                 <?php }	?> 
@@ -58,6 +58,6 @@
 
     //Close conection
     mysqli_close($db);
-                    
+
     includeTemplate('footer');
 ?>
