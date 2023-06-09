@@ -94,7 +94,7 @@
 
         
         //Validate for size
-        $measure = 1000 * 1000; //This will retur kilobytes
+        $measure = 1000 * 3000; //This will retur kilobytes
 
         if ($image['size'] > $measure) {
             $errors[] = 'Image is very too heavy';
@@ -109,22 +109,31 @@
         //Insert into database
         
         if (empty($errors)) {
-            /**Files upload(3)**/
-
             //Create file
-            // $imageFile = '../../images/';
+            $imageFile = '../../images/';
 
-            // if (!is_dir($imageFile)) {
-            //     mkdir($imageFile);
-            // } 
+            if (!is_dir($imageFile)) {
+                mkdir($imageFile);
+            }
 
-            // //Generate a unique name for images(4)
-            // $imageName = md5( uniqid( rand(), true )) . ".jpg";
+            $imageName = '';
 
-            // //Image upload
-            // move_uploaded_file($image['tmp_name'], $imageFile . $imageName);
+            /**Files upload(3)**/
+            if ($image['name']) {
+                //Delete a previous image(8)
+                unlink($imageFile . $properties['image']);
+
+                //Generate a unique name for images(4)
+                $imageName = md5( uniqid( rand(), true )) . ".jpg";
+
+                //Image upload
+                move_uploaded_file($image['tmp_name'], $imageFile . $imageName);
+            } else {
+                $imageName = $properties['image'];
+            }
+
             
-            $query = " UPDATE properties SET title = '$title', price = $price, description = '$description', rooms = $rooms, wc = $wc, parking = $parking, sellers_id = $sellers_id WHERE id = $id";
+            $query = " UPDATE properties SET title = '$title', price = $price, image = '$imageName', description = '$description', rooms = $rooms, wc = $wc, parking = $parking, sellers_id = $sellers_id WHERE id = $id";
 
             // echo $query;
             $result = mysqli_query($db, $query);

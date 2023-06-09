@@ -85,7 +85,7 @@
         }
 
         //Validate for size
-        $measure = 1000 * 1000; //This will retur kilobytes
+        $measure = 1000 * 3000; //This will retur kilobytes
 
         if ($image['size'] > $measure) {
             $errors[] = 'Image is very too heavy';
