@@ -13,6 +13,12 @@
     $db = dbConnection();
     // var_dump($db);
 
+    //Obtain property data
+    $query_properties_id = "SELECT * FROM properties WHERE id = $id";
+    $result_properties_id = mysqli_query($db, $query_properties_id);
+    $properties = mysqli_fetch_assoc($result_properties_id);
+
+
     //Query to obtain vendors
     $consulta = "SELECT * FROM sellers;";
     $resultado = mysqli_query($db, $consulta);
@@ -20,14 +26,15 @@
     //Array to errors
     $errors = [];
     
-    //Default value in variables
-        $title = '';
-        $price = '';
-        $description = '';
-        $rooms = '';
-        $wc = '';
-        $parking = '';
-        $sellers_id = '';
+    //Default value in variables (6)
+        $title = $properties['title'];
+        $price = $properties['price'];
+        $description = $properties['description'];
+        $rooms = $properties['rooms'];
+        $wc = $properties['wc'];
+        $parking = $properties['parking'];
+        $sellers_id = $properties['sellers_id'];
+        $imageProperty = $properties['image'];
 
     //Run after the form is sumbitted
     if ($_SERVER["REQUEST_METHOD"] === 'POST') {
@@ -165,6 +172,8 @@
 
                 <label for="image">Image:</label>
                 <input type="file" id="image" accept="image/jpeg, image/png" name="image">
+
+                <img src="../../images/<?php echo $imageProperty;?>" alt="image-property" class="image-small"> 
 
                 <label for="description">Description</label>
                 <textarea id="description" name="description"><?php echo $description;?></textarea>

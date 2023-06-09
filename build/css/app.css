@@ -308,7 +308,7 @@ template {
 }
 
 html {
-  font-size: 53.125%;
+  font-size: 50%;
   box-sizing: border-box;
 }
 
@@ -1322,4 +1322,8 @@ table.properties tbody {
     display: flex;
     justify-content: center;
   }
+}
+
+.image-small {
+  width: 20rem;
 }
