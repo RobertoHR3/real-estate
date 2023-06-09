@@ -1252,3 +1252,7 @@ footer .socials a:hover i {
   background-color: #BF0426;
   color: #DEDEDE;
 }
+.alert.succes {
+  background-color: #6BAEA9;
+  color: #DEDEDE;
+}

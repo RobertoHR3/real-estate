@@ -13,4 +13,8 @@
         background-color: v.$red;
         color: v.$third_gray;
     }
+    &.succes {
+        background-color: v.$green;
+        color: v.$third_gray;
+    }
 }

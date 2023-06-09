@@ -121,7 +121,8 @@
             $result = mysqli_query($db, $query);
 
             if ($result) {
-                header('Location: /Project_RealEstates/admin/index.php');
+                //query_string to generate a alert
+                header('Location: /Project_RealEstates/admin/index.php?result=1');
             } else {
                 echo "Failed Insert";
             }
