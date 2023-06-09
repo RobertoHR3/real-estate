@@ -20,7 +20,9 @@
         <h1>Real Estate Manager</h1>
         <?php   if (intval($result) === 1) { ?>
             <p class="alert succes">Advertisement successfully created</p>
-        <?php } ?>
+        <?php } else { ?>
+            <p class="alert succes">Advertisement successfully updated</p>
+        <?php }	?>
 
         <table class="properties">
             <thead>

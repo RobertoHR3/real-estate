@@ -38,14 +38,10 @@
 
     //Run after the form is sumbitted
     if ($_SERVER["REQUEST_METHOD"] === 'POST') {
-        // echo "<pre>";
-        // var_dump($_POST);
-        // echo "</pre>";
-
+        
         // echo "<pre>";
         // var_dump($_FILES);
         // echo "</pre>";
-        // exit;
         // $number = '1HOLA';
         // $number2 = 1;
 
@@ -96,12 +92,9 @@
             $errors[] = 'Choose a salesperson';
         }
 
-        if (!$image['name']) {
-            $errors[] = 'Image is obligatory';
-        }
-
+        
         //Validate for size
-        $measure = 1000 * 100; //This will retur kilobytes
+        $measure = 1000 * 1000; //This will retur kilobytes
 
         if ($image['size'] > $measure) {
             $errors[] = 'Image is very too heavy';
@@ -119,26 +112,26 @@
             /**Files upload(3)**/
 
             //Create file
-            $imageFile = '../../images/';
+            // $imageFile = '../../images/';
 
-            if (!is_dir($imageFile)) {
-                mkdir($imageFile);
-            } 
+            // if (!is_dir($imageFile)) {
+            //     mkdir($imageFile);
+            // } 
 
-            //Generate a unique name for images(4)
-            $imageName = md5( uniqid( rand(), true )) . ".jpg";
+            // //Generate a unique name for images(4)
+            // $imageName = md5( uniqid( rand(), true )) . ".jpg";
 
-            //Image upload
-            move_uploaded_file($image['tmp_name'], $imageFile . $imageName);
+            // //Image upload
+            // move_uploaded_file($image['tmp_name'], $imageFile . $imageName);
             
-            $query = " INSERT INTO properties (title, price, image, description, rooms, wc, parking, startDate, sellers_id ) VALUES ( '$title', '$price', '$imageName', '$description', '$rooms', '$wc', '$parking', $startDate, '$sellers_id' ) ";
+            $query = " UPDATE properties SET title = '$title', price = $price, description = '$description', rooms = $rooms, wc = $wc, parking = $parking, sellers_id = $sellers_id WHERE id = $id";
 
             // echo $query;
             $result = mysqli_query($db, $query);
 
             if ($result) {
                 //query_string to generate a alert
-                header('Location: /Project_RealEstates/admin/index.php?result=1');
+                header('Location: /Project_RealEstates/admin/index.php?result=2');
             } else {
                 echo "Failed Insert";
             }
@@ -159,8 +152,8 @@
             <?php echo $error; ?>
         </div>
         <?php endforeach; ?>
-        <!-- (2) -->
-        <form class="form" method="POST" action="/Project_RealEstates/admin/properties/create.php" enctype="multipart/form-data">
+        <!-- (2) && (7) -->
+        <form class="form" method="POST" enctype="multipart/form-data">
             <fieldset>
                 <legend>General Information</legend>
 
