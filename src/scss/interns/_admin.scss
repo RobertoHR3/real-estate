@@ -30,20 +30,22 @@ table.properties {
         th {
             color: v.$white;
             padding: 2rem;
+            text-align: center;
         }
     }
 
     .image-table {
         width: 10rem;
+        margin: 0 auto;
     }
 
     tbody {
+        text-align: center;
         .flex-button {
             @include m.mediaQuery(v.$tablet) {
                 display: flex;
                 justify-content: center;
             }
-            
         }
     }
 }

@@ -1,7 +1,16 @@
-<?php
+<?php 
+    //Import conection
+    require '../includes/config/database.php';
+    $db = dbConnection();
+    //Write a Query
+    $query_properties = "SELECT * FROM properties";
+    //Check database
+    $result_properties = mysqli_query($db, $query_properties);
 
+    //Show conditional messages
     $result = $_GET['result'] ?? null;
 
+    //Includes a templeates
     require '../includes/functions.php';
     includeTemplate('header');
 
@@ -23,18 +32,20 @@
                     <th>Actions</th>
                 </tr>
             </thead>
-
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Casa en la playa</td>
-                    <td><img src="/Project_RealEstates/images/8561fbf710bce191736a17f8592c0882.jpg" class="image-table" alt="table-image"></td>
-                    <td>$1200000</td>
-                    <td class="flex-button">
-                        <a href="#" class="button-red">Delete</a>
-                        <a href="#" class="button-yellow">Update</a>
-                    </td>
-                </tr>
+            
+            <tbody> <!-- Show results -->
+                <?php while ($row_properties = mysqli_fetch_assoc($result_properties)) { ?>
+                    <tr>
+                        <td><?php echo $row_properties['id']; ?></td>
+                        <td><?php echo $row_properties['title']; ?></td>
+                        <td><img src="/Project_RealEstates/images/<?php echo $row_properties['image']; ?>" class="image-table" alt="table-image"></td>
+                        <td>$ <?php echo $row_properties['price']; ?></td>
+                        <td class="flex-button">
+                            <a href="#" class="button-red">Delete</a>
+                            <a href="#" class="button-yellow">Update</a>
+                        </td>
+                    </tr>
+                <?php }	?> 
             </tbody>
         </table>
 
@@ -44,5 +55,9 @@
     </main> 
 
 <?php
+
+    //Close conection
+    mysqli_close($db);
+                    
     includeTemplate('footer');
 ?>

@@ -1308,9 +1308,14 @@ table.properties thead {
 table.properties thead th {
   color: #FFFFFF;
   padding: 2rem;
+  text-align: center;
 }
 table.properties .image-table {
   width: 10rem;
+  margin: 0 auto;
+}
+table.properties tbody {
+  text-align: center;
 }
 @media (min-width: 768px) {
   table.properties tbody .flex-button {
