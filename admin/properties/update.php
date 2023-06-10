@@ -64,11 +64,11 @@
         //Assign files to a variables
         $image = $_FILES['image'];
 
-        if ($title === '') {
+        if (!$title) {
             $errors[] = 'Add a title';
         }
 
-        if ($price <= 0) {
+        if (!$price) {
             $errors[] = 'Price is obligatory';
         }
 
@@ -76,15 +76,15 @@
             $errors[] = 'Add description with at least 50 characters';
         }
 
-        if ($rooms <= 0) {
+        if (!$rooms) {
             $errors[] = 'Add number of rooms';
         }
 
-        if ($wc <= 0) {
+        if (!$wc) {
             $errors[] = 'Add number of wc';
         }
 
-        if ($parking <= 0) {
+        if (!$parking) {
             $errors[] = 'Add number of parking';
         }
 

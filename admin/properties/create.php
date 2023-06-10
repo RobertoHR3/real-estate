@@ -22,22 +22,6 @@
 
     //Run after the form is sumbitted
     if ($_SERVER["REQUEST_METHOD"] === 'POST') {
-        // echo "<pre>";
-        // var_dump($_POST);
-        // echo "</pre>";
-
-        // echo "<pre>";
-        // var_dump($_FILES);
-        // echo "</pre>";
-        // exit;
-        // $number = '1HOLA';
-        // $number2 = 1;
-
-        // //sanitizar
-        // $resultadoTest = filter_var($number2, FILTER_SANITIZE_NUMBER_INT);
-        // var_dump($resultadoTest);
-
-        
 
         //Sanitize data entries (1)
         $title = mysqli_real_escape_string($db, $_POST["title"]);
@@ -91,14 +75,8 @@
             $errors[] = 'Image is very too heavy';
         }
 
-        // echo "<pre>";
-        // var_dump($errors);
-        // echo "</pre>";
         
         //Check to error array is empty
-
-        //Insert into database
-        
         if (empty($errors)) {
             /**Files upload(3)**/
 
@@ -115,6 +93,7 @@
             //Image upload
             move_uploaded_file($image['tmp_name'], $imageFile . $imageName);
             
+            //Insert into database
             $query = " INSERT INTO properties (title, price, image, description, rooms, wc, parking, startDate, sellers_id ) VALUES ( '$title', '$price', '$imageName', '$description', '$rooms', '$wc', '$parking', $startDate, '$sellers_id' ) ";
 
             // echo $query;
