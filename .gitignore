@@ -3,4 +3,4 @@ node_modules
 notes.md
 **/*.json
 info.php
-user.php
+users.php
