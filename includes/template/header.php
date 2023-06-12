@@ -15,7 +15,7 @@
     <header class="header <?php echo $first ? 'first': '';?>">
         <div class="container header-content">
             <div class="barra">
-                <a href="index.php">
+                <a href="/Project_RealEstates/index.php">
                     <h2>Real<span>Estate</span></h2>
                 </a>
 
@@ -26,10 +26,10 @@
                 <div class="right">
                     <img class="dark-mode-button" src="/Project_RealEstates/build/img/dark-mode.svg" alt="image-button">
                     <nav class="browsing">
-                        <a href="about.php">About</a>
-                        <a href="ads.php">Ads</a>
-                        <a href="blog.php">Blog</a>
-                        <a href="contact.php">Contact</a>
+                        <a href="/Project_RealEstates/about.php">About</a>
+                        <a href="/Project_RealEstates/ads.php">Ads</a>
+                        <a href="/Project_RealEstates/blog.php">Blog</a>
+                        <a href="/Project_RealEstates/contact.php">Contact</a>
                     </nav>
                 </div>
                 
