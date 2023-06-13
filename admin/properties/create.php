@@ -1,4 +1,9 @@
 <?php
+    require '../../includes/functions.php';
+    $auth = isAuthenticate();
+    if (!$auth) {
+        header('Location: /Project_RealEstates/index.php');
+    }
     //Database
     require '../../includes/config/database.php';
     $db = dbConnection();
@@ -109,7 +114,6 @@
 
         
     }   
-    require '../../includes/functions.php';
     includeTemplate('header');
 
 ?>

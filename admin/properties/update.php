@@ -1,5 +1,9 @@
 <?php
-
+    require '../../includes/functions.php';
+    $auth = isAuthenticate();
+    if (!$auth) {
+        header('Location: /Project_RealEstates/index.php');
+    }
     //Validate that its a valid id
     $id = $_GET['id'];
     $id = filter_var($id, FILTER_VALIDATE_INT);
@@ -148,7 +152,7 @@
 
         
     }   
-    require '../../includes/functions.php';
+    
     includeTemplate('header');
 
 ?>

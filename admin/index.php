@@ -1,8 +1,8 @@
 <?php
-    session_start();
-    $auth = $_SESSION['login'];
+    require '../includes/functions.php';
+    $auth = isAuthenticate();
     if (!$auth) {
-        header('Location: /Project_RealEstates/admin/index.php');
+        header('Location: /Project_RealEstates/index.php');
     }
     //Import conection
     require '../includes/config/database.php';
@@ -38,7 +38,6 @@
     }
 
     //Includes a templeates
-    require '../includes/functions.php';
     includeTemplate('header');
 
 ?>
