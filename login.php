@@ -29,7 +29,13 @@
                 $user = mysqli_fetch_assoc($result_user);
                 $auth = password_verify($password, $user['password']);
                 if ($auth) {
-                    
+                    //User has been authenticated(13)
+                    session_start();
+
+                    //Fiil  session array 
+                    $_SESSION['user'] = $user['email'];
+                    $_SESSION['login'] = true;
+
                 } else {
                     $errors[] = 'Incorrect password';
                 }

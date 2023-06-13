@@ -1,4 +1,9 @@
 <?php
+    session_start();
+    $auth = $_SESSION['login'];
+    if (!$auth) {
+        header('Location: /Project_RealEstates/admin/index.php');
+    }
     //Import conection
     require '../includes/config/database.php';
     $db = dbConnection();
