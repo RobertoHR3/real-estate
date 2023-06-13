@@ -19,7 +19,17 @@
         }
 
         if (empty($errors)) {
-            # code...
+            //Check if user exists
+            $query_user = "SELECT * FROM users WHERE email = '$email';";
+            $result_user = mysqli_query($db, $query_user);
+
+            var_dump($result_user);
+            if ($result_user->num_rows) {
+                //If password is correct
+                
+            } else {
+                $errors[] = 'No user exists';
+            }
         }
 
     }
