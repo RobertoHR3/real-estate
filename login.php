@@ -35,7 +35,7 @@
                     //Fiil  session array 
                     $_SESSION['user'] = $user['email'];
                     $_SESSION['login'] = true;
-
+                    header('Location: /Project_RealEstates/admin/index.php');
                 } else {
                     $errors[] = 'Incorrect password';
                 }

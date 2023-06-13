@@ -1,3 +1,13 @@
+<?php
+    
+    //14
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+
+    $auth = $_SESSION['login'] ?? false;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,6 +40,9 @@
                         <a href="/Project_RealEstates/ads.php">Ads</a>
                         <a href="/Project_RealEstates/blog.php">Blog</a>
                         <a href="/Project_RealEstates/contact.php">Contact</a>
+                        <?php   if($auth) {	?>
+                            <a href="/Project_RealEstates/log-out.php">Log out</a>
+                        <?php } ?>
                     </nav>
                 </div>
                 
