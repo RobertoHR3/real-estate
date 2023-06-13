@@ -23,10 +23,16 @@
             $query_user = "SELECT * FROM users WHERE email = '$email';";
             $result_user = mysqli_query($db, $query_user);
 
-            var_dump($result_user);
+            
             if ($result_user->num_rows) {
-                //If password is correct
-                
+                //If password is correct(12)
+                $user = mysqli_fetch_assoc($result_user);
+                $auth = password_verify($password, $user['password']);
+                if ($auth) {
+                    
+                } else {
+                    $errors[] = 'Incorrect password';
+                }
             } else {
                 $errors[] = 'No user exists';
             }
