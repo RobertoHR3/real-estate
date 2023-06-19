@@ -8,11 +8,16 @@
 
     function isAuthenticate() {
         session_start();
-        $auth = $_SESSION['login'];
-        if ($auth) {
-            return true;
-        }
-
-        return false;
         
+        if (!$_SESSION['login']) {
+            header('Location: /Project_RealEstates/index.php');
+        }
+        
+    }
+
+    function debuguear($variable) {
+        echo "<pre>";
+        var_dump($variable);
+        echo "</pre>";
+        exit;
     }

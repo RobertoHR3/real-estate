@@ -1,11 +1,16 @@
 <?php
-    require '../../includes/functions.php';
+    require '../../includes/app.php';
+    use App\Property;
+
+    $property = new Property;
+
+    debuguear($property);
+
     $auth = isAuthenticate();
     if (!$auth) {
         header('Location: /Project_RealEstates/index.php');
     }
-    //Database
-    require '../../includes/config/database.php';
+
     $db = dbConnection();
     // var_dump($db);
 
