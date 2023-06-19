@@ -1,6 +1,5 @@
 <?php
     //Import conection
-    require 'includes/config/database.php';
     $db = dbConnection();
     //Consult
     $query_ads = "SELECT * FROM properties LIMIT $limit";

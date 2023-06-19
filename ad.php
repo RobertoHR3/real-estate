@@ -6,7 +6,7 @@
         header('Location: /Project_RealEstates/index.php');
     }
     //Import conection
-    require 'includes/config/database.php';
+    require 'includes/app.php';
     $db = dbConnection();
     //Consult
     $query_ad = "SELECT * FROM properties WHERE id = $id";
@@ -17,7 +17,7 @@
     }
     $row_ad = mysqli_fetch_assoc($result_ad);
 
-    require 'includes/functions.php';
+    
     includeTemplate('header');
 
 ?>

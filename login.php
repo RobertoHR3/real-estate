@@ -1,6 +1,6 @@
 <?php
     //Import conection
-    require 'includes/config/database.php';
+    require 'includes/app.php';
     $db = dbConnection();
 
     //Authenticate user
@@ -48,7 +48,7 @@
     
 
     //Include header
-    require 'includes/functions.php';
+    
     includeTemplate('header');
 
 ?>
