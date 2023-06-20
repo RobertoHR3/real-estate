@@ -6,12 +6,15 @@
         include TEMPLATES_URL . "/$name.php";
     }
 
-    function isAuthenticate() {
+    function isAuthenticate() : bool {
         session_start();
         
-        if (!$_SESSION['login']) {
-            header('Location: /Project_RealEstates/index.php');
+        $auth = $_SESSION['login'];
+        if ($auth) {
+            return true;
         }
+
+        return false;
         
     }
 

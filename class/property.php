@@ -23,8 +23,12 @@
             $this->rooms = $args['rooms'] ?? '';
             $this->wc = $args['wc'] ?? '';
             $this->parking = $args['parking'] ?? '';
-            $this->startDate = $args['startDate'] ?? '';
+            $this->startDate = date('Y/m/d');
             $this->sellers_id = $args['sellers_id'] ?? '';
+        }
+
+        public function save() {
+            echo "Save from class";
         }
     }
 ?>

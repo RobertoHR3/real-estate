@@ -2,14 +2,8 @@
     require '../../includes/app.php';
     use App\Property;
 
-    $property = new Property;
-
-    debuguear($property);
-
-    $auth = isAuthenticate();
-    if (!$auth) {
-        header('Location: /Project_RealEstates/index.php');
-    }
+    isAuthenticate();
+    
 
     $db = dbConnection();
     // var_dump($db);
@@ -33,6 +27,14 @@
     //Run after the form is sumbitted
     if ($_SERVER["REQUEST_METHOD"] === 'POST') {
 
+        //Create an instance to object
+        $property = new Property($_POST);
+
+        $property->save();
+
+        debuguear($property);
+        
+
         //Sanitize data entries (1)
         $title = mysqli_real_escape_string($db, $_POST["title"]);
         $price = (int)mysqli_real_escape_string($db, $_POST["price"]);
@@ -40,7 +42,7 @@
         $rooms = (int)mysqli_real_escape_string($db, $_POST["rooms"]);
         $wc = (int)mysqli_real_escape_string($db, $_POST["wc"]);
         $parking = (int)mysqli_real_escape_string($db, $_POST["parking"]);
-        $sellers_id = mysqli_real_escape_string($db, $_POST["seller"]);
+        $sellers_id = mysqli_real_escape_string($db, $_POST["sellers_id"]);
         $startDate = date('Ydm');
 
         //Assign files to a variables
@@ -166,7 +168,7 @@
             <fieldset>
                 <legend>Seller</legend>
 
-                <select name="seller">
+                <select name="sellers_id">
                     <option value="" selected>--Select--</option>
                     <?php while ($row = mysqli_fetch_assoc($resultado)) { ?>
                         <option <?php echo $sellers_id === $row['id'] ? 'selected' : ''; ?> value="<?php echo $row['id']; ?>"> <?php echo $row[' name'] . " " . $row['lastName']; ?> </option>
