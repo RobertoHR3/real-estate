@@ -31,8 +31,6 @@
         $property = new Property($_POST);
 
         $property->save();
-
-        debuguear($property);
         
 
         //Sanitize data entries (1)
@@ -104,9 +102,6 @@
 
             //Image upload
             move_uploaded_file($image['tmp_name'], $imageFile . $imageName);
-            
-            //Insert into database
-            $query = " INSERT INTO properties (title, price, image, description, rooms, wc, parking, startDate, sellers_id ) VALUES ( '$title', '$price', '$imageName', '$description', '$rooms', '$wc', '$parking', $startDate, '$sellers_id' ) ";
 
             // echo $query;
             $result = mysqli_query($db, $query);

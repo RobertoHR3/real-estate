@@ -1,7 +1,7 @@
 <?php
     
     function dbConnection() : mysqli {
-        $db = mysqli_connect('localhost', 'root', 'root', 'realestates_crud');
+        $db = new mysqli('localhost', 'root', 'root', 'realestates_crud');
 
         if (!$db) {
             echo "Failed connection";
