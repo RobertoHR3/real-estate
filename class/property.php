@@ -40,16 +40,26 @@
         public function save() {
             //Sanitizar los datos
             $atributes = $this->sanitizeData();
+
+            //#20
+            $string_keys = join(', ', array_keys($atributes));
+            $string_values = join("', '", array_values($atributes));
             //Insert into database #16
-            $query = " INSERT INTO properties (title, price, image, description, rooms, wc, parking, startDate, sellers_id ) VALUES ( '$this->title', '$this->price', '$this->image', '$this->description', '$this->rooms', '$this->wc', '$this->parking', '$this->startDate', '$this->sellers_id' ) ";
+            $query = " INSERT INTO properties ( ";
+            $query .= $string_keys;
+            $query .= " ) VALUES (' "; 
+            $query .= $string_values;
+            $query .= " ') ";
 
             
             $result = self::$db->query($query);
 
+            debuguear($result);
+
         }
 
         //Identify and join db atributes
-        public function atributes() {
+        public function atributes() {//#19
             $atributes = [];
             foreach (self::$columnDB as $column) {
                 if ($column === 'id') continue; //#17
@@ -64,7 +74,7 @@
             $sanitize = [];
 
             foreach ($atributes as $key => $value) {
-                $sanitize[$key] = self::$db->escape_string($value);///18
+                $sanitize[$key] = self::$db->escape_string($value);//#18
             }
 
             return $sanitize;
