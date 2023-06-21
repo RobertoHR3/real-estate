@@ -5,7 +5,7 @@
 
         //Conection to database
         protected static $db;
-
+        protected static $columnDB = ['id', 'title', 'price', 'image', 'description', 'rooms', 'wc', 'parking', 'startDate', 'sellers_id'];
 
         public $id;
         public $title;
@@ -17,6 +17,11 @@
         public $parking;
         public $startDate;
         public $sellers_id;
+
+        //Define the conection to database
+        public static function setDB($database) {
+            self::$db = $database;
+        }
 
         public function __construct($args = []) {
 
@@ -33,18 +38,38 @@
         }
 
         public function save() {
+            //Sanitizar los datos
+            $atributes = $this->sanitizeData();
             //Insert into database #16
             $query = " INSERT INTO properties (title, price, image, description, rooms, wc, parking, startDate, sellers_id ) VALUES ( '$this->title', '$this->price', '$this->image', '$this->description', '$this->rooms', '$this->wc', '$this->parking', '$this->startDate', '$this->sellers_id' ) ";
 
             
             $result = self::$db->query($query);
-            debuguear($result);
 
-        }    
-
-        //Define the conection to database
-        public static function setDB($database) {
-            self::$db = $database;
         }
+
+        //Identify and join db atributes
+        public function atributes() {
+            $atributes = [];
+            foreach (self::$columnDB as $column) {
+                if ($column === 'id') continue; //#17
+                $atributes[$column] = $this->$column; 
+            }
+            return $atributes;
+        }
+        
+
+        public function sanitizeData() {
+            $atributes = $this->atributes();
+            $sanitize = [];
+
+            foreach ($atributes as $key => $value) {
+                $sanitize[$key] = self::$db->escape_string($value);///18
+            }
+
+            return $sanitize;
+        }
+
+        
     }    
 ?>
