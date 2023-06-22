@@ -31,7 +31,7 @@
             $this->id = $args['id'] ?? '';
             $this->title = $args['title'] ?? '';
             $this->price = $args['price'] ?? '';
-            $this->image = $args['image'] ?? 'image.jpg';
+            $this->image = $args['image'] ?? '';
             $this->description = $args['description'] ?? '';
             $this->rooms = $args['rooms'] ?? '';
             $this->wc = $args['wc'] ?? '';
@@ -55,6 +55,7 @@
             $query .= " ') ";
 
             $result = self::$db->query($query);
+            return $result;
 
         }
 
@@ -78,6 +79,14 @@
             }
 
             return $sanitize;
+        }
+
+        //Upload to files #22
+        public function setImage($image) {
+            //Assign the image attribute, the name of the image
+            if ($image) {
+                $this->image = $image;
+            }
         }
 
         //Validation #21
@@ -113,6 +122,12 @@
             if (!$this->sellers_id) {
                 self::$errors[] = 'Choose a seller';
             }
+
+            if (!$this->image) {
+                self::$errors[] = 'Add a image';
+            }
+
+                
     
             return self::$errors;
         }

@@ -1,6 +1,7 @@
 <?php
     require '../../includes/app.php';
     use App\Property;
+    use Intervention\Image\ImageManagerStatic as Image;
     //Authenticate function to login
     isAuthenticate();
     //conection to database
@@ -25,38 +26,37 @@
     if ($_SERVER["REQUEST_METHOD"] === 'POST') {
         //Create an instance to object
         $property = new Property($_POST);
+
+        //Generate a unique name for images(4)
+        $imageName = md5( uniqid( rand(), true )) . ".jpg";
+
+        //Setear image
+        //Resize the image with intervetion #22
+        if ($_FILES['image']['tmp_name']) {
+            $image = Image::make($_FILES['image']['tmp_name'])->fit(800, 600);
+            $property->setImage($imageName);
+        }
+        
+
         //Call to validate method
         $errors =$property->validate();
         
-        
-        
-
-        
         //Check to error array is empty
         if (empty($errors)) {
-            //Call to save method
-            $property->save();
-            //Assign files to a variables
-            $image = $_FILES['image'];
-
-            /**Files upload(3)**/
-
+            
             //Create file
-            $imageFile = '../../images/';
-
-            if (!is_dir($imageFile)) {
-                mkdir($imageFile);
+            if (!is_dir(FILES_IMAGES)) {
+                mkdir(FILES_IMAGES);
             } 
 
-            //Generate a unique name for images(4)
-            $imageName = md5( uniqid( rand(), true )) . ".jpg";
+            //Save image in server #22
+            $image->save(FILES_IMAGES . $imageName);
 
-            //Image upload
-            move_uploaded_file($image['tmp_name'], $imageFile . $imageName);
+            //Call to save method
+            $result = $property->save();
 
-            // echo $query;
-            $result = mysqli_query($db, $query);
 
+            //Message success or error
             if ($result) {
                 //query_string to generate a alert
                 header('Location: /Project_RealEstates/admin/index.php?result=1');
