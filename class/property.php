@@ -7,6 +7,9 @@
         protected static $db;
         protected static $columnDB = ['id', 'title', 'price', 'image', 'description', 'rooms', 'wc', 'parking', 'startDate', 'sellers_id'];
 
+        //Errors
+        protected static $errors = [];
+
         public $id;
         public $title;
         public $price;
@@ -51,10 +54,7 @@
             $query .= $string_values;
             $query .= " ') ";
 
-            
             $result = self::$db->query($query);
-
-            debuguear($result);
 
         }
 
@@ -80,6 +80,41 @@
             return $sanitize;
         }
 
-        
+        //Validation #21
+        public static function getErrors() {
+            return self::$errors;
+        }
+
+        public function validate() {
+            if (!$this->title) {
+                self::$errors[] = 'Add a title';
+            }
+
+            if (!$this->price) {
+                self::$errors[] = 'Add a price';
+            }
+
+            if (!$this->description) {
+                self::$errors[] = 'Add a description, 50 characters minimum';
+            }
+
+            if (!$this->rooms) {
+                self::$errors[] = 'Add a number of rooms';
+            }
+
+            if (!$this->wc) {
+                self::$errors[] = 'Add a number of wc';
+            }
+
+            if (!$this->parking) {
+                self::$errors[] = 'Add a number of parking spaces';
+            }
+
+            if (!$this->sellers_id) {
+                self::$errors[] = 'Choose a seller';
+            }
+    
+            return self::$errors;
+        }
     }    
 ?>

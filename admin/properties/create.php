@@ -1,19 +1,16 @@
 <?php
     require '../../includes/app.php';
     use App\Property;
-
+    //Authenticate function to login
     isAuthenticate();
-    
-
+    //conection to database
     $db = dbConnection();
-    // var_dump($db);
 
     //Query to obtain vendors
     $consulta = "SELECT * FROM sellers;";
     $resultado = mysqli_query($db, $consulta);
 
-    //Array to errors
-    $errors = [];
+    $errors = Property::getErrors();
     
     //Default value in variables
         $title = '';
@@ -26,68 +23,22 @@
 
     //Run after the form is sumbitted
     if ($_SERVER["REQUEST_METHOD"] === 'POST') {
-
         //Create an instance to object
         $property = new Property($_POST);
-
-        $property->save();
+        //Call to validate method
+        $errors =$property->validate();
         
-
-        //Sanitize data entries (1)
-        $title = mysqli_real_escape_string($db, $_POST["title"]);
-        $price = (int)mysqli_real_escape_string($db, $_POST["price"]);
-        $description = mysqli_real_escape_string($db, $_POST["description"]);
-        $rooms = (int)mysqli_real_escape_string($db, $_POST["rooms"]);
-        $wc = (int)mysqli_real_escape_string($db, $_POST["wc"]);
-        $parking = (int)mysqli_real_escape_string($db, $_POST["parking"]);
-        $sellers_id = mysqli_real_escape_string($db, $_POST["sellers_id"]);
-        $startDate = date('Ydm');
-
-        //Assign files to a variables
-        $image = $_FILES['image'];
-
-        if ($title === '') {
-            $errors[] = 'Add a title';
-        }
-
-        if ($price <= 0) {
-            $errors[] = 'Price is obligatory';
-        }
-
-        if (strlen($description)  < 50) {
-            $errors[] = 'Add description with at least 50 characters';
-        }
-
-        if ($rooms <= 0) {
-            $errors[] = 'Add number of rooms';
-        }
-
-        if ($wc <= 0) {
-            $errors[] = 'Add number of wc';
-        }
-
-        if ($parking <= 0) {
-            $errors[] = 'Add number of parking';
-        }
-
-        if (!$sellers_id) {
-            $errors[] = 'Choose a salesperson';
-        }
-
-        if (!$image['name']) {
-            $errors[] = 'Image is obligatory';
-        }
-
-        //Validate for size
-        $measure = 1000 * 3000; //This will retur kilobytes
-
-        if ($image['size'] > $measure) {
-            $errors[] = 'Image is very too heavy';
-        }
+        
+        
 
         
         //Check to error array is empty
         if (empty($errors)) {
+            //Call to save method
+            $property->save();
+            //Assign files to a variables
+            $image = $_FILES['image'];
+
             /**Files upload(3)**/
 
             //Create file
