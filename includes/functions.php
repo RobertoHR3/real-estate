@@ -7,15 +7,12 @@
         include TEMPLATES_URL . "/$name.php";
     }
 
-    function isAuthenticate() : bool {
+    function isAuthenticate() {
         session_start();
         
-        $auth = $_SESSION['login'];
-        if ($auth) {
-            return true;
+        if (!$_SESSION['login']) {
+            header('Location: /Project_RealEstates/index.php');
         }
-
-        return false;
         
     }
 

@@ -37,7 +37,6 @@
             $property->setImage($imageName);
         }
         
-
         //Call to validate method
         $errors =$property->validate();
         
@@ -48,7 +47,7 @@
             if (!is_dir(FILES_IMAGES)) {
                 mkdir(FILES_IMAGES);
             } 
-
+            
             //Save image in server #22
             $image->save(FILES_IMAGES . $imageName);
 

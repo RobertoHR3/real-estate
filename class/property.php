@@ -131,5 +131,39 @@
     
             return self::$errors;
         }
+
+        //List all properties
+        public static function all() {
+            $query = "SELECT * FROM properties";
+            $result = self::checkSQL($query);
+            return $result;
+        }
+
+        public static function checkSQL($query) {
+            //Check database
+            $result = self::$db->query($query);
+            //Iterate results
+            $array = [];
+            while($row = $result->fetch_assoc()) {
+                $array[] = self::createObject($row);
+            }
+            //Free up memory #24
+            $result->free();
+            //Return results
+            return $array;
+
+        }
+
+        protected static function createObject($register) {
+            //#23
+            $object = new self;
+            foreach($register as $key => $value) {
+                if (property_exists($object, $key)) {
+                    $object->$key = $value;
+                }
+            }
+
+            return $object;
+        }
     }    
 ?>

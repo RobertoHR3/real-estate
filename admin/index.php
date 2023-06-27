@@ -1,16 +1,11 @@
 <?php
-    require '../includes/functions.php';
-    $auth = isAuthenticate();
-    if (!$auth) {
-        header('Location: /Project_RealEstates/index.php');
-    }
-    //Import conection
-    require '../includes/config/database.php';
-    $db = dbConnection();
-    //Write a Query
-    $query_properties = "SELECT * FROM properties";
-    //Check database
-    $result_properties = mysqli_query($db, $query_properties);
+    require '../includes/app.php';
+    isAuthenticate();
+
+    use App\Property;
+    
+    //Implement a method to get all properties
+    $properties = Property::all();
 
     //Show conditional messages
     $result = $_GET['result'] ?? null;
