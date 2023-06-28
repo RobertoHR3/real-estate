@@ -7,20 +7,14 @@
     //conection to database
     $db = dbConnection();
 
+    $property = new Property;
+
     //Query to obtain vendors
     $consulta = "SELECT * FROM sellers;";
     $resultado = mysqli_query($db, $consulta);
 
     $errors = Property::getErrors();
     
-    //Default value in variables
-        $title = '';
-        $price = '';
-        $description = '';
-        $rooms = '';
-        $wc = '';
-        $parking = '';
-        $sellers_id = '';
 
     //Run after the form is sumbitted
     if ($_SERVER["REQUEST_METHOD"] === 'POST') {
@@ -80,47 +74,7 @@
         <?php endforeach; ?>
         <!-- (2) -->
         <form class="form" method="POST" action="/Project_RealEstates/admin/properties/create.php" enctype="multipart/form-data">
-            <fieldset>
-                <legend>General Information</legend>
-
-                <label for="title">Title:</label>
-                <input type="text" id="title" name="title" placeholder="Property title" value="<?php echo $title;?>">
-
-                <label for="price">Price:</label>
-                <input type="number" id="price" name="price" placeholder="Property price" value="<?php echo $price;?>">
-
-                <label for="image">Image:</label>
-                <input type="file" id="image" accept="image/jpeg, image/png" name="image">
-
-                <label for="description">Description</label>
-                <textarea id="description" name="description"><?php echo $description;?></textarea>
-
-            </fieldset>
-
-            <fieldset>
-                <legend>Property Information</legend>
-
-                <label for="room">Rooms:</label>
-                <input type="number" id="room" name="rooms" placeholder="Ex: 3" min="1" max="9" value="<?php echo $rooms;?>">
-
-                <label for="wc">Bathrooms:</label>
-                <input type="number" id="wc" name="wc" placeholder="Ex: 3" min="1" max="9" value="<?php echo $wc;?>">
-
-                <label for="parking">Parking:</label>
-                <input type="number" id="parking" name="parking" placeholder="Ex: 3" min="1" max="9" value="<?php echo $parking;?>">
-            </fieldset>
-
-            <fieldset>
-                <legend>Seller</legend>
-
-                <select name="sellers_id">
-                    <option value="" selected>--Select--</option>
-                    <?php while ($row = mysqli_fetch_assoc($resultado)) { ?>
-                        <option <?php echo $sellers_id === $row['id'] ? 'selected' : ''; ?> value="<?php echo $row['id']; ?>"> <?php echo $row[' name'] . " " . $row['lastName']; ?> </option>
-                    <?php }; ?>
-                    
-                </select>
-            </fieldset>
+            <?php include '../../includes/template/properties_form.php'	?>
 
             <div class="view-all-start">
                 <input type="submit" value="Create property">

@@ -22,3 +22,9 @@
         echo "</pre>";
         exit;
     }
+
+    //Escape / Sanitize HTML #24
+    function sanitize($html) {
+        $sanitize = htmlspecialchars($html);
+        return $sanitize;
+    }
