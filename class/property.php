@@ -132,11 +132,18 @@
             return self::$errors;
         }
 
-        //List all properties
+        //List all registers
         public static function all() {
             $query = "SELECT * FROM properties";
             $result = self::checkSQL($query);
             return $result;
+        }
+
+        //Serch for a record by id #25
+        public static function find($id) {
+            $query = "SELECT * FROM properties WHERE id = $id";
+            $result = self::checkSQL($query);
+            return array_shift($result);
         }
 
         public static function checkSQL($query) {
