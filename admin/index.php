@@ -59,19 +59,19 @@
             </thead>
             
             <tbody> <!-- Show results -->
-                <?php while ($row_properties = mysqli_fetch_assoc($result_properties)) { ?>
+                <?php foreach($properties as $property) { ?>
                     <tr>
-                        <td><?php echo $row_properties['id']; ?></td>
-                        <td><?php echo $row_properties['title']; ?></td>
-                        <td><img src="/Project_RealEstates/images/<?php echo $row_properties['image']; ?>" class="image-table" alt="table-image"></td>
-                        <td>$ <?php echo $row_properties['price']; ?></td>
+                        <td><?php echo $property->id; ?></td>
+                        <td><?php echo $property->title; ?></td>
+                        <td><img src="/Project_RealEstates/images/<?php echo $property->image; ?>" class="image-table" alt="table-image"></td>
+                        <td>$ <?php echo $property->price; ?></td>
                         <td class="flex-button">
                             <form method="POST">
-                                <input type="hidden" name="id" value="<?php echo $row_properties['id'];	?>"> 
+                                <input type="hidden" name="id" value="<?php echo $property->id;	?>"> 
                                 <input type="submit" class="button-red" value="Delete">
                             </form>
                             
-                            <a href="../admin/properties/update.php?id=<?php echo $row_properties['id']; ?>" class="button-yellow">Update</a>
+                            <a href="../admin/properties/update.php?id=<?php echo $property->id; ?>" class="button-yellow">Update</a>
                         </td>
                     </tr>
                 <?php }	?> 
