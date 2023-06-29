@@ -172,5 +172,14 @@
 
             return $object;
         }
+
+        //Synchronizes the object in memory with the changes made by the user #
+        public function sincronize($args = []) {
+            foreach($args as $key => $value) {
+                if (property_exists($this, $key) && !is_null($value)) {
+                    $this->$key = $value;
+                }
+            }
+        }
     }    
 ?>

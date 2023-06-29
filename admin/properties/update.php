@@ -26,28 +26,11 @@ use App\Property;
 
     //Run after the form is sumbitted
     if ($_SERVER["REQUEST_METHOD"] === 'POST') {
-        
-        // echo "<pre>";
-        // var_dump($_FILES);
-        // echo "</pre>";
-        // $number = '1HOLA';
-        // $number2 = 1;
 
-        // //sanitizar
-        // $resultadoTest = filter_var($number2, FILTER_SANITIZE_NUMBER_INT);
-        // var_dump($resultadoTest);
-
-        
-
-        //Sanitize data entries (1)
-        $title = mysqli_real_escape_string($db, $_POST["title"]);
-        $price = (int)mysqli_real_escape_string($db, $_POST["price"]);
-        $description = mysqli_real_escape_string($db, $_POST["description"]);
-        $rooms = (int)mysqli_real_escape_string($db, $_POST["rooms"]);
-        $wc = (int)mysqli_real_escape_string($db, $_POST["wc"]);
-        $parking = (int)mysqli_real_escape_string($db, $_POST["parking"]);
-        $sellers_id = mysqli_real_escape_string($db, $_POST["seller"]);
-        $startDate = date('Ydm');
+        //Assign attributes
+        $args = $_POST['property'];
+        $property->sincronize($args);
+        debuguear($property);
 
         //Assign files to a variables
         $image = $_FILES['image'];

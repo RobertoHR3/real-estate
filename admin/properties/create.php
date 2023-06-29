@@ -19,15 +19,15 @@
     //Run after the form is sumbitted
     if ($_SERVER["REQUEST_METHOD"] === 'POST') {
         //Create an instance to object
-        $property = new Property($_POST);
+        $property = new Property($_POST['property']);
 
         //Generate a unique name for images(4)
         $imageName = md5( uniqid( rand(), true )) . ".jpg";
 
         //Setear image
         //Resize the image with intervetion #22
-        if ($_FILES['image']['tmp_name']) {
-            $image = Image::make($_FILES['image']['tmp_name'])->fit(800, 600);
+        if ($_FILES['property']['tmp_name']['image']) {
+            $image = Image::make($_FILES['property']['tmp_name']['image'])->fit(800, 600);
             $property->setImage($imageName);
         }
         
