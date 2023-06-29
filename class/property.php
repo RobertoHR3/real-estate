@@ -41,6 +41,16 @@
         }
 
         public function save() {
+            if (isset($this->id)) {
+                //Update
+                $this->upadte();
+            } else {
+                //Create a register
+                $this->create();
+            }
+        }
+
+        public function create() {
             //Sanitizar los datos
             $atributes = $this->sanitizeData();
 
@@ -57,6 +67,29 @@
             $result = self::$db->query($query);
             return $result;
 
+        }
+
+        public function upadte() {
+            //Sanitizar los datos
+            $atributes = $this->sanitizeData();
+
+            $values = [];
+            foreach($atributes as $key => $value) {
+                $values[] = "{$key}='{$value}'";
+            }
+
+            $query = "UPDATE properties SET ";
+            $query .= join(', ', $values );
+            $query .= " WHERE id = '" . self::$db->escape_string($this->id) . "' ";
+            $query .= " LIMIT 1 ";
+
+            $result = self::$db->query($query);
+            if ($result) {
+                //query_string to generate a alert
+                header('Location: /Project_RealEstates/admin/index.php?result=2');
+            } else {
+                echo "Failed Insert";
+            }
         }
 
         //Identify and join db atributes
@@ -84,7 +117,7 @@
         //Upload to files #22
         public function setImage($image) {
             //Delete the previous image
-            if ($this->id) {
+            if (isset($this->id)) {
                 //Check if the file exists
                 $fileExists = file_exists(FILES_IMAGES . $this->image);
                 if ($fileExists) {

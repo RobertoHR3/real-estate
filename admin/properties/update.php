@@ -22,8 +22,6 @@ use Intervention\Image\ImageManagerStatic as Image;
 
     //Array to errors
     $errors = Property::getErrors();
-    
-    
 
     //Run after the form is sumbitted
     if ($_SERVER["REQUEST_METHOD"] === 'POST') {
@@ -44,19 +42,9 @@ use Intervention\Image\ImageManagerStatic as Image;
         }
 
         if (empty($errors)) {
-            exit;
-
-            $query = " UPDATE properties SET title = '$title', price = $price, image = '$imageName', description = '$description', rooms = $rooms, wc = $wc, parking = $parking, sellers_id = $sellers_id WHERE id = $id";
-
-            // echo $query;
-            $result = mysqli_query($db, $query);
-
-            if ($result) {
-                //query_string to generate a alert
-                header('Location: /Project_RealEstates/admin/index.php?result=2');
-            } else {
-                echo "Failed Insert";
-            }
+            //Image storage
+            $image->save(FILES_IMAGES . $imageName);
+            $property->save();
         }
 
         
