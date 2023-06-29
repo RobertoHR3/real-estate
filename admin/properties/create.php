@@ -46,16 +46,7 @@
             $image->save(FILES_IMAGES . $imageName);
 
             //Call to save method
-            $result = $property->save();
-
-
-            //Message success or error
-            if ($result) {
-                //query_string to generate a alert
-                header('Location: /Project_RealEstates/admin/index.php?result=1');
-            } else {
-                echo "Failed Insert";
-            }
+            $property->save();
         }
 
         

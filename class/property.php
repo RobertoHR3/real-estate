@@ -28,7 +28,7 @@
 
         public function __construct($args = []) {
 
-            $this->id = $args['id'] ?? '';
+            $this->id = $args['id'] ?? null;
             $this->title = $args['title'] ?? '';
             $this->price = $args['price'] ?? '';
             $this->image = $args['image'] ?? '';
@@ -41,7 +41,7 @@
         }
 
         public function save() {
-            if (isset($this->id)) {
+            if (!is_null($this->id)) {
                 //Update
                 $this->upadte();
             } else {
@@ -65,8 +65,13 @@
             $query .= " ') ";
 
             $result = self::$db->query($query);
-            return $result;
-
+            //Message success or error
+            if ($result) {
+                //query_string to generate a alert
+                header('Location: /Project_RealEstates/admin/index.php?result=1');
+            } else {
+                echo "Failed Insert";
+            }
         }
 
         public function upadte() {
@@ -127,7 +132,7 @@
         //Upload to files #22
         public function setImage($image) {
             //Delete the previous image
-            if (isset($this->id)) {
+            if (!is_null($this->id)) {
                 $this->deleteImage();
             }
             //Assign the image attribute, the name of the image
