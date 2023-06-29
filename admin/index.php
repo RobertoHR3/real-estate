@@ -16,19 +16,8 @@
 
 
         if ($id) {
-            //Delete file(9)
-            $query_image = "SELECT image FROM properties WHERE id = $id";
-            $result_image = mysqli_query($db, $query_image);
-            $property_image = mysqli_fetch_assoc($result_image);
-
-            unlink('../images/' . $property_image['image']);
-            //Delete property
-            $query_delete = "DELETE FROM properties WHERE id = $id";
-            $result_delete = mysqli_query($db, $query_delete);
-
-            if ($result_delete) {
-                header('Location: /Project_RealEstates/admin/index.php?result=3');
-            }
+            $property = Property::find($id);
+            $property->delete();
         }
     }
 

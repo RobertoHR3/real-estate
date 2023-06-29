@@ -92,6 +92,16 @@
             }
         }
 
+        //Delete a register
+        public function delete() {
+            $query = "DELETE FROM properties WHERE id = " . self::$db->escape_string($this->id) . " LIMIT 1";
+            $result = self::$db->query($query);
+            if ($result) {
+                $this->deleteImage();
+                header('Location: /Project_RealEstates/admin/index.php?result=3');
+            }
+        }
+
         //Identify and join db atributes
         public function atributes() {//#19
             $atributes = [];
@@ -118,15 +128,20 @@
         public function setImage($image) {
             //Delete the previous image
             if (isset($this->id)) {
-                //Check if the file exists
-                $fileExists = file_exists(FILES_IMAGES . $this->image);
-                if ($fileExists) {
-                    unlink(FILES_IMAGES . $this->image);
-                }
+                $this->deleteImage();
             }
             //Assign the image attribute, the name of the image
             if ($image) {
                 $this->image = $image;
+            }
+        }
+
+        //Delete file
+        public function deleteImage() {
+            //Check if the file exists
+            $fileExists = file_exists(FILES_IMAGES . $this->image);
+            if ($fileExists) {
+                unlink(FILES_IMAGES . $this->image);
             }
         }
 
