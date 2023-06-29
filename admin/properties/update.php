@@ -20,7 +20,7 @@ use App\Property;
     $resultado = mysqli_query($db, $consulta);
 
     //Array to errors
-    $errors = [];
+    $errors = Property::getErrors();
     
     
 
@@ -30,55 +30,8 @@ use App\Property;
         //Assign attributes
         $args = $_POST['property'];
         $property->sincronize($args);
-        debuguear($property);
-
-        //Assign files to a variables
-        $image = $_FILES['image'];
-
-        if (!$title) {
-            $errors[] = 'Add a title';
-        }
-
-        if (!$price) {
-            $errors[] = 'Price is obligatory';
-        }
-
-        if (strlen($description)  < 50) {
-            $errors[] = 'Add description with at least 50 characters';
-        }
-
-        if (!$rooms) {
-            $errors[] = 'Add number of rooms';
-        }
-
-        if (!$wc) {
-            $errors[] = 'Add number of wc';
-        }
-
-        if (!$parking) {
-            $errors[] = 'Add number of parking';
-        }
-
-        if (!$sellers_id) {
-            $errors[] = 'Choose a salesperson';
-        }
-
         
-        //Validate for size
-        $measure = 1000 * 3000; //This will retur kilobytes
-
-        if ($image['size'] > $measure) {
-            $errors[] = 'Image is very too heavy';
-        }
-
-        // echo "<pre>";
-        // var_dump($errors);
-        // echo "</pre>";
-        
-        //Check to error array is empty
-
-        //Insert into database
-        
+        $errors = $property->validate();
         if (empty($errors)) {
             //Create file
             $imageFile = '../../images/';
