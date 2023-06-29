@@ -1,6 +1,7 @@
 <?php
 
 use App\Property;
+use Intervention\Image\ImageManagerStatic as Image;
 
     require '../../includes/app.php';
     isAuthenticate();
@@ -30,33 +31,21 @@ use App\Property;
         //Assign attributes
         $args = $_POST['property'];
         $property->sincronize($args);
-        
+        //Validate
         $errors = $property->validate();
+
+        //Upload files
+        //Generate a unique name for images(4)
+        $imageName = md5( uniqid( rand(), true )) . ".jpg";
+
+        if ($_FILES['property']['tmp_name']['image']) {
+            $image = Image::make($_FILES['property']['tmp_name']['image'])->fit(800, 600);
+            $property->setImage($imageName);
+        }
+
         if (empty($errors)) {
-            //Create file
-            $imageFile = '../../images/';
+            exit;
 
-            if (!is_dir($imageFile)) {
-                mkdir($imageFile);
-            }
-
-            $imageName = '';
-
-            /**Files upload(3)**/
-            if ($image['name']) {
-                //Delete a previous image(8)
-                unlink($imageFile . $properties['image']);
-
-                //Generate a unique name for images(4)
-                $imageName = md5( uniqid( rand(), true )) . ".jpg";
-
-                //Image upload
-                move_uploaded_file($image['tmp_name'], $imageFile . $imageName);
-            } else {
-                $imageName = $properties['image'];
-            }
-
-            
             $query = " UPDATE properties SET title = '$title', price = $price, image = '$imageName', description = '$description', rooms = $rooms, wc = $wc, parking = $parking, sellers_id = $sellers_id WHERE id = $id";
 
             // echo $query;

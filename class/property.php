@@ -83,6 +83,14 @@
 
         //Upload to files #22
         public function setImage($image) {
+            //Delete the previous image
+            if ($this->id) {
+                //Check if the file exists
+                $fileExists = file_exists(FILES_IMAGES . $this->image);
+                if ($fileExists) {
+                    unlink(FILES_IMAGES . $this->image);
+                }
+            }
             //Assign the image attribute, the name of the image
             if ($image) {
                 $this->image = $image;
