@@ -48,12 +48,8 @@ use Intervention\Image\ImageManagerStatic as Image;
             
             $property->save();
         }
-
-        
     }   
-    
     includeTemplate('header');
-
 ?>
 
     <main class="container">

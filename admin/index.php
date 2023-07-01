@@ -16,7 +16,6 @@
         $id = $_POST['id'];
         $id = filter_var($id, FILTER_VALIDATE_INT);
 
-
         if ($id) {
             $type = $_POST['type'];
             if (validateTypeContent($type)) {
@@ -29,7 +28,6 @@
                     $property->delete();
                 }
             }
-            
         }
     }
 
@@ -115,6 +113,10 @@
                 <?php }	?> 
             </tbody>
         </table>
+
+        <div class="view-all-start">
+            <a class="button_all-start" href="/Project_RealEstates/admin/sellers/create.php">New Seller</a>
+        </div>
     </main> 
 
 <?php

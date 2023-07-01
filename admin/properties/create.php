@@ -47,11 +47,8 @@
             //Call to save method
             $property->save();
         }
-
-        
     }   
     includeTemplate('header');
-
 ?>
 
     <main class="container">
