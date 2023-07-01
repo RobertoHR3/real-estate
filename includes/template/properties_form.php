@@ -38,7 +38,7 @@
     <select name="property[sellers_id]">
         <option value="" selected>--Select--</option>
         <?php while ($row = mysqli_fetch_assoc($resultado)) { ?>
-            <option <?php echo sanitize($property->sellers_id) === $row['id'] ? 'selected' : ''; ?> value="<?php echo $row['id']; ?>"> <?php echo $row[' name'] . " " . $row['lastName']; ?> </option>
+            <option <?php echo sanitize($property->sellers_id) === $row['id'] ? 'selected' : ''; ?> value="<?php echo $row['id']; ?>"> <?php echo $row['name'] . " " . $row['lastName']; ?> </option>
         <?php }; ?>
                     
     </select>

@@ -3,41 +3,18 @@
     class ActiveRecord {
          //Conection to database
         protected static $db;
-        protected static $columnDB = ['id', 'title', 'price', 'image', 'description', 'rooms', 'wc', 'parking', 'startDate', 'sellers_id'];
+        protected static $columnDB = [];
         protected static $table = '';
 
         //Errors
         protected static $errors = [];
-
-        public $id;
-        public $title;
-        public $price;
-        public $image;
-        public $description;
-        public $rooms;
-        public $wc;
-        public $parking;
-        public $startDate;
-        public $sellers_id;
 
         //Define the conection to database
         public static function setDB($database) {
             self::$db = $database;
         }
 
-        public function __construct($args = []) {
-
-            $this->id = $args['id'] ?? null;
-            $this->title = $args['title'] ?? '';
-            $this->price = $args['price'] ?? '';
-            $this->image = $args['image'] ?? '';
-            $this->description = $args['description'] ?? '';
-            $this->rooms = $args['rooms'] ?? '';
-            $this->wc = $args['wc'] ?? '';
-            $this->parking = $args['parking'] ?? '';
-            $this->startDate = date('Ymd');
-            $this->sellers_id = $args['sellers_id'] ?? '';
-        }
+        
 
         public function save() {
             if (!is_null($this->id)) {
@@ -223,7 +200,7 @@
 
         protected static function createObject($register) {
             //#23
-            $object = new self;
+            $object = new static;
             foreach($register as $key => $value) {
                 if (property_exists($object, $key)) {
                     $object->$key = $value;
