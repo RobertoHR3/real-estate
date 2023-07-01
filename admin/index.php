@@ -12,13 +12,24 @@
     $result = $_GET['result'] ?? null;
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        
         $id = $_POST['id'];
         $id = filter_var($id, FILTER_VALIDATE_INT);
 
 
         if ($id) {
-            $property = Property::find($id);
-            $property->delete();
+            $type = $_POST['type'];
+            if (validateTypeContent($type)) {
+                //Compare what is to be removed
+                if ($type === 'seller') {
+                    $seller = Sellers::find($id);
+                    $seller->delete();
+                } else if ($type === 'property') {
+                    $property = Property::find($id);
+                    $property->delete();
+                }
+            }
+            
         }
     }
 
@@ -59,6 +70,7 @@
                         <td class="flex-button">
                             <form method="POST">
                                 <input type="hidden" name="id" value="<?php echo $property->id;	?>"> 
+                                <input type="hidden" name="type" value="property"> 
                                 <input type="submit" class="button-red" value="Delete">
                             </form>
                             
@@ -92,7 +104,8 @@
                         <td><?php echo $seller->phone; ?></td>
                         <td class="flex-button">
                             <form method="POST">
-                                <input type="hidden" name="id" value="<?php echo $seller->id;	?>"> 
+                                <input type="hidden" name="id" value="<?php echo $seller->id;	?>">
+                                <input type="hidden" name="type" value="seller"> 
                                 <input type="submit" class="button-red" value="Delete">
                             </form>
 

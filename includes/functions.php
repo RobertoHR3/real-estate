@@ -28,3 +28,9 @@
         $sanitize = htmlspecialchars($html);
         return $sanitize;
     }
+
+    //Validate Content type
+    function validateTypeContent($type) {
+        $types = ['property', 'seller'];
+        return in_array($type, $types);
+    }
