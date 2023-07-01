@@ -6,6 +6,6 @@
     //Conection to database
     $db = dbConnection();
 
-    use App\Property;
-    Property::setDB($db);
+    use App\ActiveRecord;
+    ActiveRecord::setDB($db);
 ?>

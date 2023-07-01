@@ -1,6 +1,7 @@
 <?php
 
 use App\Property;
+use App\Sellers;
 use Intervention\Image\ImageManagerStatic as Image;
 
     require '../../includes/app.php';
@@ -16,9 +17,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 
     $property = Property::find($id);
 
-    //Query to obtain vendors
-    $consulta = "SELECT * FROM sellers;";
-    $resultado = mysqli_query($db, $consulta);
+    $sellers = Sellers::all();
 
     //Array to errors
     $errors = Property::getErrors();
@@ -42,8 +41,11 @@ use Intervention\Image\ImageManagerStatic as Image;
         }
 
         if (empty($errors)) {
-            //Image storage
-            $image->save(FILES_IMAGES . $imageName);
+            if ($_FILES['property']['tmp_name']['image']) {
+                //Image storage
+                $image->save(FILES_IMAGES . $imageName);
+            }
+            
             $property->save();
         }
 

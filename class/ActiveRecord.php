@@ -14,7 +14,6 @@
             self::$db = $database;
         }
 
-        
 
         public function save() {
             if (!is_null($this->id)) {
@@ -86,7 +85,7 @@
         //Identify and join db atributes
         public function atributes() {//#19
             $atributes = [];
-            foreach (self::$columnDB as $column) {
+            foreach (static::$columnDB as $column) {
                 if ($column === 'id') continue; //#17
                 $atributes[$column] = $this->$column; 
             }
@@ -156,7 +155,7 @@
             //Iterate results
             $array = [];
             while($row = $result->fetch_assoc()) {
-                $array[] = self::createObject($row);
+                $array[] = static::createObject($row);
             }
             //Free up memory #24
             $result->free();
