@@ -35,11 +35,10 @@
 <fieldset>
     <legend>Seller</legend>
 
-    <select name="property[sellers_id]">
+    <select name="property[sellers_id]" id="seller">
         <option value="" selected>--Select--</option>
-        <?php while ($row = mysqli_fetch_assoc($resultado)) { ?>
-            <option <?php echo sanitize($property->sellers_id) === $row['id'] ? 'selected' : ''; ?> value="<?php echo $row['id']; ?>"> <?php echo $row['name'] . " " . $row['lastName']; ?> </option>
+        <?php foreach($sellers as $seller) { ?>
+            <option <?php echo $property->sellers_id === $seller->id ? 'selected' : '';	?> value="<?php echo sanitize($seller->id);?>"><?php echo sanitize($seller->name) . " " . sanitize($seller->lastName); ?></option>
         <?php }; ?>
-                    
     </select>
 </fieldset>

@@ -8,7 +8,6 @@
     //Implement a method to get all properties
     $properties = Property::all();
     $sellers = Sellers::all();
-    debuguear($sellers);
     //Show conditional messages
     $result = $_GET['result'] ?? null;
 
