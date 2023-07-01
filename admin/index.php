@@ -36,7 +36,8 @@
         <?php } elseif(intval($result) === 3) { ?>
             <p class="alert succes">Advertisement successfully deleted</p>
         <?php }	?>
-
+        
+        <h2>Properties</h2>
         <table class="properties">
             <thead>
                 <tr>
@@ -71,12 +72,38 @@
         <div class="view-all-start">
             <a class="button_all-start" href="/Project_RealEstates/admin/properties/create.php">New Property</a>
         </div>
+
+        <h2>Sellers</h2>
+        <table class="properties">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            
+            <tbody> <!-- Show results -->
+                <?php foreach($sellers as $seller) { ?>
+                    <tr>
+                        <td><?php echo $seller->id; ?></td>
+                        <td><?php echo $seller->name . " " . $seller->lastName;?></td>
+                        <td><?php echo $seller->phone; ?></td>
+                        <td class="flex-button">
+                            <form method="POST">
+                                <input type="hidden" name="id" value="<?php echo $seller->id;	?>"> 
+                                <input type="submit" class="button-red" value="Delete">
+                            </form>
+
+                            <a href="../admin/sellers/update.php?id=<?php echo $seller->id; ?>" class="button-yellow">Update</a>
+                        </td>
+                    </tr>
+                <?php }	?> 
+            </tbody>
+        </table>
     </main> 
 
 <?php
-
-    //Close conection
-    mysqli_close($db);
-
     includeTemplate('footer');
 ?>
