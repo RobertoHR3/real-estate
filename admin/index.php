@@ -39,11 +39,11 @@
     <main class="container">
         <h1>Real Estate Manager</h1>
         <?php   if (intval($result) === 1) { ?>
-            <p class="alert succes">Advertisement successfully created</p>
+            <p class="alert succes">successfully created</p>
         <?php } elseif(intval($result) === 2) { ?>
-            <p class="alert succes">Advertisement successfully updated</p>
+            <p class="alert succes">successfully updated</p>
         <?php } elseif(intval($result) === 3) { ?>
-            <p class="alert succes">Advertisement successfully deleted</p>
+            <p class="alert succes">successfully deleted</p>
         <?php }	?>
         
         <h2>Properties</h2>

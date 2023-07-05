@@ -55,9 +55,9 @@
         <h1>Create</h1>
         
         <?php foreach($errors as $error): ?>
-        <div class="alert error">
-            <?php echo $error; ?>
-        </div>
+            <div class="alert error">
+                <?php echo $error; ?>
+            </div>
         <?php endforeach; ?>
         <!-- (2) -->
         <form class="form" method="POST" action="/Project_RealEstates/admin/properties/create.php" enctype="multipart/form-data">

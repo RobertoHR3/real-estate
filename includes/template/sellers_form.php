@@ -13,6 +13,6 @@
     <legend>Extra Information</legend>
 
     <label for="phone">Phone:</label>
-    <input type="number" id="phone" name="seller[phone]" placeholder="Phone" value="<?php echo sanitize($seller->phone);?>">
+    <input type="text" id="phone" name="seller[phone]" placeholder="Phone" value="<?php echo sanitize($seller->phone);?>">
 
 </fieldset>

@@ -18,6 +18,26 @@
             $this->lastName = $args['lastName'] ?? '';
             $this->phone = $args['phone'] ?? '';
         }
+
+        public function validate() {
+            if (!$this->name) {
+                self::$errors[] = 'Add a name';
+            }
+
+            if (!$this->lastName) {
+                self::$errors[] = 'Add a last name';
+            }
+
+            if (!$this->phone) {
+                self::$errors[] = 'Add a phone';
+            }
+            #28
+            if (!preg_match('/[0-9]{10}/', $this->phone)) {
+                self::$errors[] = 'Invalid format';
+            }
+
+            return self::$errors;
+        }
     }
     
 ?>

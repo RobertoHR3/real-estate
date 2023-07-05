@@ -11,7 +11,14 @@
 
     //Run after the form is sumbitted
     if ($_SERVER["REQUEST_METHOD"] === 'POST') {
+        //Create a new instance
+        $seller = new Sellers($_POST['seller']);
+        //Validate that hasn't empty fields
+        $errors = $seller->validate();
 
+        if (empty($errors)) {
+            $seller->save();
+        }
     }
 
     includeTemplate('header');
