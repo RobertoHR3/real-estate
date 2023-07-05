@@ -38,13 +38,12 @@
 
     <main class="container">
         <h1>Real Estate Manager</h1>
-        <?php   if (intval($result) === 1) { ?>
-            <p class="alert succes">successfully created</p>
-        <?php } elseif(intval($result) === 2) { ?>
-            <p class="alert succes">successfully updated</p>
-        <?php } elseif(intval($result) === 3) { ?>
-            <p class="alert succes">successfully deleted</p>
-        <?php }	?>
+        <?php	
+            $message = showNotification(intval($result));
+            if ($message) { ?>
+                <p class="alert succes"> <?php echo sanitize($message);	?></p>
+            <?php }	?>
+        
         
         <h2>Properties</h2>
         <table class="properties">

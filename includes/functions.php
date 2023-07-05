@@ -34,3 +34,24 @@
         $types = ['property', 'seller'];
         return in_array($type, $types);
     }
+
+    //Show the message alerts
+    function showNotification($code) {
+        $message = '';
+        switch ($code) {
+            case 1:
+                $message = 'successfully created';
+                break;
+            case 2:
+                $message = 'successfully updated';
+                break;
+            case 3:
+                $message = 'successfully deleted';
+                break;
+            default:
+                $message = false;
+            
+            
+        }
+        return $message;
+    }
