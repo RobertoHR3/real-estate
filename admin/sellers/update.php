@@ -3,15 +3,32 @@
     use App\Sellers;
     //Authenticate function to login
     isAuthenticate();
-    
-    $seller = new Sellers;
 
+    //Validate that will be an id valid
+    
+    $id = $_GET['id'];
+    $id = filter_var($id, FILTER_VALIDATE_INT);
+    if (!$id) {
+        header('Location: /Project_RealEstates/admin');
+    }
+    //Obtain seller's array
+    $seller = Sellers::find($id);
     //Array with errors messages
     $errors = Sellers::getErrors();
-
+    
     //Run after the form is sumbitted
-    if ($_SERVER["REQUEST_METHOD"] === 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        //Assign the values
+        $args = $_POST['seller'];
+        //Synchronize the object in memory with what the user wrote
+        $seller->sincronize($args);
 
+        //Validate
+        $errors = $seller->validate();
+        if(empty($errors)) {
+            $seller->save();
+        }
+        
     }
 
     includeTemplate('header');
@@ -26,7 +43,7 @@
         </div>
         <?php endforeach; ?>
         <!-- (2) -->
-        <form class="form" method="POST" action="/Project_RealEstates/admin/sellers/update.php" enctype="multipart/form-data">
+        <form class="form" method="POST" enctype="multipart/form-data">
             <?php include '../../includes/template/sellers_form.php'?>
 
             <div class="view-all-start">
