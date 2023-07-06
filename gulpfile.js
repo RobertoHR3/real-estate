@@ -1,5 +1,5 @@
 //Dependencies for work with sass to CSS 
-const {src, dest, watch} = require('gulp');
+const {src, dest, watch, parallel} = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const plumber = require('gulp-plumber');
 
@@ -21,7 +21,7 @@ const css = done => {
     src(paths.scss)
     .pipe( plumber() )
     .pipe( sass() )
-    .pipe( dest('build/css') )
+    .pipe( dest('public/build/css') )
     done()
 }
 
@@ -32,7 +32,7 @@ const versionWebp = done => {
     }
     src( paths.images )
     .pipe( webp(options) )
-    .pipe( dest('build/img') )
+    .pipe( dest('public/build/img') )
     done()
 }
 
@@ -42,7 +42,7 @@ const versionAvif = done => {
     }
     src( paths.images )
     .pipe( avif(options) )
-    .pipe( dest('build/img') )
+    .pipe( dest('public/build/img') )
     done()
 }
 
@@ -52,13 +52,13 @@ const versionJpp = done => {
     }
     src( paths.images )
     .pipe( cache( imagemin(options) ) )
-    .pipe( dest('build/img') )
+    .pipe( dest('public/build/img') )
     done()
 }
 
 const javascript = done => {
     src(paths.js)
-    .pipe( dest('build/js') )
+    .pipe( dest('public/build/js') )
     done();
 }
 
@@ -74,3 +74,5 @@ exports.webp = versionWebp;
 exports.avif = versionAvif;
 exports.jpg = versionJpp;
 exports.js = javascript;
+
+exports.default = parallel(css, javascript, versionWebp, versionAvif, versionJpp);
