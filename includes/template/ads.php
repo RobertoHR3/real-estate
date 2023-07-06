@@ -1,7 +1,12 @@
 <?php
     use App\Property;
 
-    $properties = Property::all();
+    
+    if ($_SERVER['SCRIPT_NAME'] === '/Project_RealEstates/ads.php') {
+        $properties = Property::all();
+    } else {
+        $properties = Property::get(3);
+    }
 ?>
 
 <div class="ads-container">

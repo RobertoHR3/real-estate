@@ -142,6 +142,13 @@
             return $result;
         }
 
+        //Get a certain number of records
+        public static function get($count) {
+            $query = "SELECT * FROM " . static::$table . " LIMIT " . $count;
+            $result = self::checkSQL($query);
+            return $result;
+        }
+
         //Serch for a record by id #25
         public static function find($id) {
             $query = "SELECT * FROM " . static::$table . " WHERE id = $id";
