@@ -21,7 +21,7 @@ const css = done => {
     src(paths.scss)
     .pipe( plumber() )
     .pipe( sass() )
-    .pipe( dest('public/build/css') )
+    .pipe( dest('./public/build/css') )
     done()
 }
 
@@ -32,7 +32,7 @@ const versionWebp = done => {
     }
     src( paths.images )
     .pipe( webp(options) )
-    .pipe( dest('public/build/img') )
+    .pipe( dest('./public/build/img') )
     done()
 }
 
@@ -42,7 +42,7 @@ const versionAvif = done => {
     }
     src( paths.images )
     .pipe( avif(options) )
-    .pipe( dest('public/build/img') )
+    .pipe( dest('./public/build/img') )
     done()
 }
 
@@ -52,13 +52,13 @@ const versionJpp = done => {
     }
     src( paths.images )
     .pipe( cache( imagemin(options) ) )
-    .pipe( dest('public/build/img') )
+    .pipe( dest('./public/build/img') )
     done()
 }
 
 const javascript = done => {
     src(paths.js)
-    .pipe( dest('public/build/js') )
+    .pipe( dest('./public/build/js') )
     done();
 }
 
